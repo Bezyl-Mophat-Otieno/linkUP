@@ -6,6 +6,7 @@ import userRouter from './routes/users/user.routes.js';
 import productRouter from './routes/products/product.routes.js';
 import postRouter from './routes/posts/post.routes.js';
 import commentRouter from './routes/comments/comment.routes.js';
+import followerRouter from './routes/followers/followers.routes.js';
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || "5000";
@@ -16,6 +17,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/posts', postRouter);
 app.use('/api/v1/comments', commentRouter);
+app.use('/api/v1/followers', followerRouter);
 app.use('/', (req, res) => {
     res.send('Server is running successfully');
 });

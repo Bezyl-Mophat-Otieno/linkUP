@@ -1,0 +1,7 @@
+CREATE OR ALTER PROCEDURE unfollow
+@id VARCHAR(255)
+AS
+BEGIN
+    DELETE FROM followerTable WHERE id = @id
+END
+
