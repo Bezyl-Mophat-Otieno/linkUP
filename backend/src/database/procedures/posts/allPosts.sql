@@ -1,0 +1,4 @@
+CREATE OR ALTER PROCEDURE allPosts
+    AS BEGIN
+    SELECT * FROM postTable;
+    END;

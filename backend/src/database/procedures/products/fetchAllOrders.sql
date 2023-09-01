@@ -1,0 +1,6 @@
+CREATE OR ALTER PROCEDURE fetchAllOrders
+AS
+BEGIN
+    SELECT * FROM orderTable;
+END;
+

@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE fetchUser
+    @id  VARCHAR(500)
+AS BEGIN
+    SELECT * FROM userTable WHERE id = @id
+END
