@@ -1,0 +1,52 @@
+.background{background: #1E1F24;}
+.input{
+    border-radius: 10.264px;
+    border: 0.513px solid #6E767D;
+    background: #27292F;
+}
+
+.action-buttons{
+border-radius: 10.264px;
+border: 0.513px solid #1DA1F2;
+background: #27292F;
+}
+.action-text{
+    color: #1DA1F2;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.comments{
+    border-radius: 4.68px;
+background: #27292F;
+}
+.myComments{
+    border-radius: 4.68px;
+border: 0.468px solid #6E767D;
+background: #27292F;
+}
+
+.singleProductView{
+border-radius: 7.019px;
+border: 0.468px solid #6E767D;
+background: #17181C;
+}
+.imageInsideTheSingleProductView{
+border-radius: 3.258px;
+background: url(<path-to-image>), lightgray 0px -36.089px / 100% 123.299% no-repeat;
+}
+
+.chatSection {
+    border-radius: 7.48px;
+    border: 0.374px solid #6E767D;
+    background: #17181C;
+}
+
+.chatMessage {
+border-radius: 3.74px;
+border: 0.374px solid #6E767D;
+background: #27292F;
+}
