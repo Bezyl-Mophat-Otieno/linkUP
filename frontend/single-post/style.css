@@ -24,7 +24,7 @@
   margin-top: 5vh;
   display: flex;
   justify-content: flex-start;
-  gap: 60px;
+  gap: 30px;
   align-items: flex-start;
   width: 95vw;
 }
@@ -73,7 +73,6 @@
   align-items: center;
   overflow-x: scroll;
   overflow-y: hidden;
-
   /* border: 2px solid green; */
 }
 
@@ -82,43 +81,11 @@
   color: white;
   margin-top: 5vh;
   width: 45vw !important;
-  padding: 20px;
-  border-radius: 10px;
 }
 
 .img-custom {
   height: 30vh;
   object-fit: cover;
-}
-
-.call-to-action {
-  margin-top: 3vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.priceContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1vh;
-  height: 10vh;
-}
-.card-body {
-  border: 1px solid #6e767d;
-  border-radius: 20px 20px 0px 0px;
-  height: 15vh;
-}
-.buy {
-  width: 70%;
-  height: 8vh;
-}
-.contact-seller {
-  width: 70%;
-  height: 8vh;
 }
 .card-header {
   display: flex;
@@ -126,102 +93,44 @@
   margin-bottom: 2vh;
 }
 
-.profileSection {
-  display: none;
-}
-.profileDetails {
-  display: none;
-}
-
-.chat-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 80vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  width: 50vw;
-  border: 1px solid #6e767d;
-  padding: 15px;
-}
-
-.chat-area form input {
-  margin-top: 4vh;
-  margin-bottom: 4vh;
-  width: 40vw;
-  height: 8vh;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #e0e1dd;
-  color: black;
-  font-size: 1.2rem;
-  outline: none;
-  border: 1px solid #6e767d;
-}
-.chat-area form input::placeholder {
-  color: #6e767d;
-}
-
-.material-symbols-outlined {
-  color: #6e767d;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.sent {
-  width: 100%;
-  height: 30vh;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 4vw;
-
-  /* border: 2px solid green; */
-}
-.recieved {
-  width: 100%;
-  height: 30vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 4vh;
-
-  /* border: 2px solid red; */
-}
-
-.card-custom {
-  background-color: #15181c;
-  color: white;
-  margin-top: 5vh;
-  width: 20vw !important;
-  /* border: 1px solid #6E767D; */
-}
-
-.card-body {
-  border: 1px solid #6e767d;
-  background-color: #27292f;
-  height: 30vh;
-  width: 20vw;
-  border-radius: 20px 20px 0px 0px;
-}
-
 .card-footer {
+  margin-top: 3vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .actions {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
   align-items: center;
+}
+
+.recieved .card-custom {
+  background-color: #15181c;
+  color: white;
+  margin-top: 5vh;
+  width: 15vw !important;
+  border-radius: 20px 20px 20px 0px;
+}
+
+.sent .card-custom {
+  background-color: #15181c;
+  color: white;
+  margin-top: 5vh;
+  width: 15vw !important;
+  border-radius: 20px 20px 20px 0px;
 }
 
 @media screen and (max-width: 412px) {
   .navbar {
     display: contents;
   }
+  .sideNav {
+    display: none;
+  }
+
   .navbar-custom {
     background-color: #1e1f24 !important;
     color: white;
@@ -260,21 +169,6 @@
     align-items: center;
     gap: 3vh;
   }
-
-  .chat-area form input {
-    margin-top: 4vh;
-    margin-bottom: 4vh;
-    width: 60vw;
-    height: 5vh;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: transparent;
-    color: #6e767d;
-    font-size: 1.2rem;
-    outline: none;
-    border: 1px solid #6e767d;
-  }
   .form-control {
     background-color: #1e1f24 !important;
     border: 1px solid #6e767d !important;
@@ -287,49 +181,36 @@
     display: none;
   }
   .mainContent {
+    margin-top: 5vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow-x: scroll;
-    overflow-y: hidden;
+
     /* border: 2px solid green; */
   }
-
-  .chat-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 50vh;
-    gap: 40px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 90%;
-    border: none;
-  }
-  .sent {
-    margin-bottom: 15vh;
-    width: 100%;
-    height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .recieved {
-    width: 100%;
-    height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .card-custom {
     background-color: #15181c;
     color: white;
     margin-top: 5vh;
-    width: 100% !important;
-    /* border: 1px solid #6E767D; */
+    width: 90% !important;
+  }
+
+  .recieved .card-custom {
+    background-color: #15181c;
+    color: white;
+    margin-top: 5vh;
+    width: 90% !important;
+    border-radius: 20px 20px 20px 0px;
+  }
+
+  .sent .card-custom {
+    background-color: #15181c;
+    color: white;
+    margin-top: 5vh;
+    width: 90% !important;
+    border-radius: 20px 20px 20px 0px;
   }
   .card-header {
     background-color: #1e1f24;
@@ -337,13 +218,32 @@
     border-bottom: 1px solid #6e767d;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1vh;
+  }
+  .price {
+    margin-top: 3vh;
+    color: #6e767d;
   }
   .card-body {
     border: 1px solid #6e767d;
-    height: 30vh;
-    width: 100%;
     border-radius: 20px 20px 0px 0px;
+  }
+  .call-to-action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+  }
+  .buy {
+    margin-top: 2vh;
+    width: 100%;
+    height: 5vh;
+  }
+  .contact-seller {
+    width: 100%;
+    height: 5vh;
   }
   .img-custom {
     height: 20vh;
