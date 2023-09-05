@@ -19,7 +19,7 @@
             <span class="material-symbols-outlined">
               diversity_3
               </span>
-            <a class="navbar-brand" href="#">linkUP</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/user-dashboard/index.html#">linkUP</a>
 
           </div>
           <button class=" navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                 <span class="material-symbols-outlined">
                   house
                   </span>
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/user-dashboard/index.html">Home</a>
               </li>
               <li class="nav-item">
                 <span class="material-symbols-outlined">
@@ -53,6 +53,11 @@
                   </span>
                   <a class="nav-link active" aria-current="page" href="#">My Orders</a>
                 </div>
+
+
+    
+
+
               <div class="nav-item">
                 <span class="material-symbols-outlined">
                   real_estate_agent
@@ -125,6 +130,12 @@
                   </div>
                 </div>
               </div>
+              <li class="nav-item">
+                <span class="material-symbols-outlined">
+                  storefront
+                  </span>
+                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/market-place/index.html#">Market Place</a>
+              </li>
               
 
               <li class="nav-item">
@@ -144,13 +155,13 @@
           <span class="material-symbols-outlined logo">
             diversity_3
             </span>
-          <a class="navbar-brand" href="#">linkUP</a>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/user-dashboard/index.html#">linkUP</a>
         </div>
         <div class="menuItem">
           <span class="material-symbols-outlined">
             home_pin
             </span>
-          <a class="navbar-brand" href="#">Home</a>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/user-dashboard/index.html#">Home</a>
         </div>
         <div class="menuItem">
           <span class="material-symbols-outlined">
@@ -159,34 +170,155 @@
           <a class="navbar-brand" href="#">My Posts</a>
         </div>
         <div class="menuItem">
-          <span class="material-symbols-outlined">
-            production_quantity_limits
-            </span>
-          <a class="navbar-brand" href="#">My Orders</a>
+          <span class="material-symbols-outlined"> real_estate_agent </span>
+          <a
+            class="navbar-brand"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasBottom"
+            aria-controls="offcanvasRight"
+            class="material-symbols-outlined"
+            href="#"
+            id="sales"
+            >Sales</a
+          >
+        </div>
+
+        <div
+          class="offcanvas offcanvas-custom offcanvas-end"
+          tabindex="-1"
+          id="offcanvasBottom"
+          aria-labelledby="offcanvasBottomLabel"
+        >
+          <div class="offcanvas-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body small">
+            <!-- Table Goes in here  -->
+
+            <div class="container mt-0">
+              <h2>My Sales</h2>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>American Khaki</td>
+                    <td>KSH1900.99</td>
+                  </tr>
+                  <tr>
+                    <td>Rubber Shoes</td>
+                    <td>KSH290.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
         <div class="menuItem">
-          <span class="material-symbols-outlined">
-            real_estate_agent
-            </span>
-          <a class="navbar-brand" href="#">My Sales</a>
+          <span class="material-symbols-outlined"> work_history </span>
+          <a class="navbar-brand" type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasOrders"
+          aria-controls="offcanvasRight" id="orders" href="#">Orders</a>
+        
+          </button>
         </div>
+
+        <div
+          class="offcanvas offcanvas-custom offcanvas-end"
+          tabindex="-1"
+          id="offcanvasOrders"
+          aria-labelledby="offcanvasBottomLabel"
+        >
+          <div class="offcanvas-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body small">
+            <!-- Table Goes in here  -->
+
+            <div class="container mt-0">
+              <h2>My Orders</h2>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>American Khaki</td>
+                    <td>KSH1900.99</td>
+                  </tr>
+                  <tr>
+                    <td>Rubber Shoes</td>
+                    <td>KSH290.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+
         <div class="menuItem">
           <span class="material-symbols-outlined">
             storefront
             </span>
-          <a class="navbar-brand" href="#">Market Place</a>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/market-place/index.html#">Market Place</a>
         </div>
-        <div class="menuItem">
-          <span class="material-symbols-outlined">
-            manage_accounts
-            </span>
-          <a class="navbar-brand" href="#">Profile</a>
-        </div>
+    
         <div class="menuItem">
           <span class="material-symbols-outlined">
             follow_the_signs
             </span>
           <a class="navbar-brand" href="#">Followers</a>
+        </div>
+
+        <div class="menuItem">
+          <span class="material-symbols-outlined">
+            logout
+            </span>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/login/index.html#">Log-out</a>
         </div>
       </div>
       <div class="mainContent">
@@ -243,7 +375,11 @@
       <div class="rightNav">
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Who are you looking for ?" aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit">Search</button>
+          <button class="btn btn-secondary border-0" type="submit">
+            <span class="material-symbols-outlined">
+              search
+              </span>
+          </button>
           </form>
           <div class="container">
             <div class="persons">

@@ -1,357 +1,370 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.body{
+.body {
+  background-color: #15181c;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* padding: 30px 20px; */
+}
+
+.navbar {
+  display: none;
+}
+.updateForm {
+  height: 80vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid white; */
+  background-color: #1e1f24;
+  gap: 1rem;
+}
+.homeLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2vh;
+}
+.material-symbols-outlined {
+  color: #6e767d;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.homeText {
+  color: #6e767d;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.updateForm input {
+  color: white;
+  border-radius: 10.264px;
+  border: 0.513px solid #6e767d;
+  background: #27292f;
+  width: 40vw;
+  font-size: 18px;
+  padding: 10px 20px;
+  height: 10vh;
+}
+.updateForm button {
+  width: 20vw;
+  border-radius: 10.264px;
+  border: 0.513px solid #1da1f2;
+  background: #27292f;
+  height: 8vh;
+  color: #1da1f2;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.updateForm button:hover {
+  background-color: #1da1f2;
+  color: white;
+  border: white;
+}
+
+.statement {
+  color: white;
+}
+.link {
+  text-decoration: none;
+  color: #1da1f2;
+}
+
+.main {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: flex-start;
+  width: 95vw;
+}
+.sideNav {
+  position: sticky;
+  top: 0;
+  margin-left: 2vw;
+  width: 20vw;
+  border: 2px solid #6e767d;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  background-color: #1e1f24;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  color: white;
+}
+.brandLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+  margin: 10px;
+  border-radius: 10%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
+.mainContent {
+  margin-top: 5vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  /* border: 2px solid green; */
+}
+
+.profileSection {
+  margin-left: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  color: white;
+}
+.profileSection img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profileDetails {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.following {
+  color: #6e767d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.followers {
+  color: #6e767d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.modal-custom {
+  background-color: #15181c !important;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-header {
+  border-bottom: 1px solid #6e767d;
+  width: 50vw;
+  background-color: white;
+}
+
+.updateForm {
+  width: 100%;
+  height: 60vh;
+  border-radius: 20px;
+}
+.updateForm input {
+  width: 30vw;
+  height: 6vh;
+}
+.updateForm button {
+  width: 30vw;
+  height: 6vh;
+}
+
+.rightNav {
+  width: 40vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  height: 60vh;
+  border: 2px solid #6e767d;
+  border-radius: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #1e1f24;
+}
+
+.rightNav form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rightNav form input {
+  width: 15vw;
+  border: 1px solid #6e767d;
+  border-radius: 5px;
+  background-color: #1e1f24;
+  color: #6e767d;
+  margin-bottom: 10px;
+  height: 7vh;
+}
+.rightNav form input::placeholder {
+  color: white;
+}
+.rightNav form button {
+  height: 5vh;
+}
+.rightNav form button .material-symbols-outlined {
+  height: 5vh;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  margin-top: 5vh;
+}
+.persons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 5vh;
+  color: white;
+}
+
+/* .offcanvas-custom{
+    color: white;
     background-color: #15181C;
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    width: 100vw;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    /* padding: 30px 20px; */
+} */
+
+/* Style the table with white borders */
+table {
+  border: 2px solid white;
+  border-collapse: collapse;
 }
 
-.navbar{
-    display: none;
+/* Style table header */
+th {
+  background-color: white;
+  color: black;
 }
-.updateForm{
-    height: 80vh;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* border: 2px solid white; */
-    background-color:#1E1F24;
-    gap: 1rem;
-    
-}
-.homeLink{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2vh;
-}
-.material-symbols-outlined{
-    color: #6E767D;
-    font-size: 2rem;
-    cursor: pointer;
-}
-.homeText{
-    color: #6E767D;
-    font-size: 1.5rem;
-    cursor: pointer;
-    text-decoration: none;
-}
-.updateForm input{
-    color:white;
-    border-radius: 10.264px;
-    border: 0.513px solid #6E767D;
-    background: #27292F;
-    width: 40vw;
-    font-size: 18px;
-    padding: 10px 20px;
-    height: 10vh;
-}
-.updateForm button{
-    
-width: 20vw;
-border-radius: 10.264px;
-border: 0.513px solid #1DA1F2;
-background: #27292F;
-height: 8vh;
-color: #1DA1F2;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-cursor: pointer;
-transition: all 0.3s ease-in-out;
-
-}
-.updateForm button:hover{
-    background-color: #1DA1F2;
-    color: white;
-    border: white;
-}
-
-.statement{
-    color: white;
-}
-.link{
-    text-decoration: none;
-    color: #1DA1F2;
-}
-
-.main{
-    margin-top: 5vh;
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    align-items: flex-start;
-    width: 95vw;
-}
-.sideNav{
-    position: sticky;
-    top: 0;
-    margin-left: 2vw;
-    width:20vw;
-    border: 2px solid  #6E767D;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 40px;
-    background-color: #1E1F24;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.menuItem{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-    color: #6E767D;
-}
-.brandLogo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:1vh;
-    margin: 10px;
-    color: #0f527c;
-    border: 2px solid #0c3c5a;
-    border-radius: 10%;
-    padding: 10px;
-}
-
-.mainContent{
-    margin-top: 5vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    /* border: 2px solid green; */
-}
-
-.profileSection{
-    margin-left: 10px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-    color: white;
-}
-.profileSection img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-.profileDetails{
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 10vh;
-}
-.stats{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
-.following{
-    color: #6E767D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-}
-.followers{
-    color: #6E767D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-}
-.modal-custom{
-    background-color: #15181C !important;
-    width: 50vw;
-}
-.modal-header{
-    border-bottom: 1px solid #6E767D;
-    width: 50vw;
-    background-color: white;
-}
-
-.updateForm{
-    width: 100%;
-    height: 60vh;
-    border-radius: 20px;
-}
-.updateForm input{
-    width: 40vw;
-    height: 6vh;
-}
-.updateForm button{
-    width: 40vw;
-    height: 6vh;
-}
-
-
-.rightNav{
-    width:40vw;
-    height:50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 10px;
-    position: sticky;
-    top: 0;
-    height: 60vh;
-    border : 2px solid #6E767D;
-    border-radius: 10px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-
-}
-.rightNav h1{
-    color: white;
-}
-.rightNav form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.rightNav form input{
-    width: 30vw;
-    border: 1px solid #6E767D;
-    border-radius: 5px;
-    background-color: #1E1F24;
-    color: #6E767D;
-    margin-bottom: 10px;
-    height: 7vh;
-
-}
-.rightNav form input::placeholder{
-    color: #6E767D;
-}
-.rightNav form button{
-    height: 5vh;
-
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    width: 100%;
-    margin-top: 5vh;
-}
-.persons{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    margin-top: 5vh;
-    color: #6E767D;
-}
-
 
 /* Sumsung Galaxy Note 20 */
 
-
-
 @media screen and (max-width: 412px) {
-    .navbar{
-        display: contents;
-    }
-    .rightNav{
-        display: none;
-    }
+  .navbar {
+    display: contents;
+  }
+  .rightNav {
+    display: none;
+  }
 
-.navbar-custom {
-    background-color:#1E1F24 !important;
+  .navbar-custom {
+    background-color: #1e1f24 !important;
     color: white;
-}
-.brand-container{
+  }
+  .brand-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1vh;
-}
-.material-symbols-outlined{
-    color: #6E767D;
+  }
+  .material-symbols-outlined {
+    color: #6e767d;
     font-size: 2rem;
     cursor: pointer;
-}
+  }
 
-.navbar-brand{
-    color: #6E767D;
-}
-.navbar-toggler-custom{
-    border: 2px solid #6E767D !important;
+  .navbar-brand {
+    color: #6e767d;
+  }
+  .navbar-toggler-custom {
+    border: 2px solid #6e767d !important;
     background-color: transparent;
     padding: 5px;
     border-radius: 5px;
-    
-}
-.material-symbols-outlined{
-    color: #6E767D !important;
-}
-.nav-link{
+  }
+  .material-symbols-outlined {
+    color: #6e767d !important;
+  }
+  .nav-link {
     color: white !important;
     padding: 10px;
-}
-.nav-item{
+  }
+  .nav-item {
     display: flex;
     /* justify-content: center; */
     align-items: center;
     gap: 3vh;
-}
-.offcanvas-custom{
+  }
+  .offcanvas-custom {
     color: white;
-    background-color: #15181C;
-}
-.accounts{
+    background-color: #15181c;
+  }
+  .accounts {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 3vh;
-}
-.btn-close-custom{
-    color: #6E767D !important;
-    background-color: #6E767D;
-}
+  }
+  .btn-close-custom {
+    color: #6e767d !important;
+    background-color: #6e767d;
+  }
 
-.form-control{
-    background-color: #1E1F24 !important;
-    border: 1px solid #6E767D !important;
-    color: #6E767D !important;
-}
-.form-control::placeholder{
-    color: #6E767D !important;
-}
-.sideNav{
+  .form-control {
+    background-color: #1e1f24 !important;
+    border: 1px solid #6e767d !important;
+    color: #6e767d !important;
+  }
+  .form-control::placeholder {
+    color: #6e767d !important;
+  }
+  .sideNav {
     display: none;
-}
-.mainContent{
+  }
+  .mainContent {
     margin-top: 5vh;
     width: 100vw;
     display: flex;
@@ -361,9 +374,9 @@ transition: all 0.3s ease-in-out;
     overflow-x: scroll;
     overflow-y: hidden;
     /* border: 2px solid green; */
-}
+  }
 
-.profileSection{
+  .profileSection {
     margin-left: 10px;
     width: 100%;
     display: flex;
@@ -372,63 +385,62 @@ transition: all 0.3s ease-in-out;
     align-items: flex-start;
     gap: 10px;
     color: white;
-}
-.profileSection img{
+  }
+  .profileSection img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-}
+  }
 
-.profileDetails{
+  .profileDetails {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
     height: 10vh;
-}
-.stats{
+  }
+  .stats {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-}
-.following{
-    color: #6E767D;
+  }
+  .following {
+    color: #6e767d;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
-}
-.followers{
-    color: #6E767D;
+  }
+  .followers {
+    color: #6e767d;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
-}
-.modal-custom{
-    background-color: #15181C !important;
+  }
+  .modal-custom {
+    background-color: #15181c !important;
     width: 100%;
-}
+  }
 
-.modal-header{
-    border-bottom: 1px solid #6E767D;
+  .modal-header {
+    border-bottom: 1px solid #6e767d;
     width: 100%;
     background-color: white;
-}
+  }
 
-    .updateForm{
-        width: 100%;
-        height: 60vh;
-        border-radius: 20px;
-    }
-    .updateForm input{
-        width: 70vw;
-        height: 6vh;
-    }
-    .updateForm button{
-        width: 70vw;
-        height: 6vh;
-    }
-    
+  .updateForm {
+    width: 100%;
+    height: 60vh;
+    border-radius: 20px;
+  }
+  .updateForm input {
+    width: 70vw;
+    height: 6vh;
+  }
+  .updateForm button {
+    width: 70vw;
+    height: 6vh;
+  }
 }

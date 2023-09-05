@@ -4,7 +4,7 @@
 }
 
 .body{
-    background-color: #15181C;
+    background-color: #17181C;
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
     top: 0;
     margin-left: 2vw;
     width:20vw;
-    border: 2px solid  #6E767D;
+    /* border: 2px solid  #6E767D; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -41,13 +41,17 @@
     background-color: #1E1F24;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0px 1px 2px 0px rgba(2, 102, 102, 0.7),
+    1px 2px 4px 0px rgba(2, 104, 104, 0.7),
+    2px 4px 8px 0px rgba(4, 134, 134, 0.7),
+    2px 4px 16px 0px rgba(6, 119, 119, 0.7);
 }
 .menuItem{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-    color: #6E767D;
+    color:white;
 }
 .brandLogo{
     display: flex;
@@ -55,16 +59,15 @@
     align-items: center;
     gap:1vh;
     margin: 10px;
-    color: #0f527c;
-    border: 2px solid #0c3c5a;
     border-radius: 10%;
     padding: 10px;
+    background-color: black;
+    color: white;
 }
 
 .rightNav{
     width:40vw;
     height:50vh;
-    /* border: 2px solid white; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -73,10 +76,16 @@
     position: sticky;
     top: 0;
     height: 60vh;
-    border : 2px solid #6E767D;
+    /* border : 2px solid #6E767D; */
     border-radius: 10px;
     overflow-y: scroll;
-    overflow-x: hidden;}
+    background-color: #1E1F24;
+    overflow-x: hidden;
+    box-shadow: 0px 1px 2px 0px rgba(2, 102, 102, 0.7),
+    1px 2px 4px 0px rgba(2, 104, 104, 0.7),
+    2px 4px 8px 0px rgba(4, 134, 134, 0.7),
+    2px 4px 16px 0px rgba(6, 119, 119, 0.7);
+}
 .rightNav h1{
     color: white;
 }
@@ -85,7 +94,7 @@
     border: 1px solid #6E767D;
     border-radius: 5px;
     background-color: #1E1F24;
-    color: #6E767D;
+    color: black;
     margin-bottom: 10px;
     height: 7vh;
 
