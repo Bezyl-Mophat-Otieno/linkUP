@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&family=Outfit:wght@400;700&family=Poppins:wght@100;200;300&family=Rubik:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Product</title>
+  </head>
+  <body class="body">
+    <nav class="navbar navbar-custom navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="brand-container">
+          <span class="material-symbols-outlined"> diversity_3 </span>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/user-dashboard/index.html">linkUP</a>
+        </div>
+        <button
+          class="navbar-toggler-custom"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="material-symbols-outlined"> menu </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <span class="material-symbols-outlined"> house </span>
+              <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/user-dashboard/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <span class="material-symbols-outlined"> manage_accounts </span>
+              <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/profile/index.html"
+                >Profile</a
+              >
+            </li>
+
+            <!-- Orders in the mobile version  -->
+            
+            <div class="nav-item">
+              <span class="material-symbols-outlined"> work_history </span>
+              <a class="nav-link active" type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasOrders"
+              aria-controls="offcanvasRight" href="#">Orders</a>
+              </button>
+            </div>
+
+            <div
+          class="offcanvas offcanvas-custom offcanvas-end"
+          tabindex="-1"
+          id="offcanvasOrders"
+          aria-labelledby="offcanvasBottomLabel"
+        >
+          <div class="offcanvas-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body small">
+            <!-- Table Goes in here  -->
+
+            <div class="container mt-0">
+              <h2>My Orders</h2>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>American Khaki</td>
+                    <td>KSH1900.99</td>
+                  </tr>
+                  <tr>
+                    <td>Rubber Shoes</td>
+                    <td>KSH290.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- Sales in Mobile Version -->
+        <div class="nav-item">
+          <span class="material-symbols-outlined"> real_estate_agent </span>
+          <a
+            class="nav-link active"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasBottom"
+            aria-controls="offcanvasRight"
+            class="material-symbols-outlined"
+            href="#"
+            >Sales</a
+          >
+        </div>
+
+        <div
+          class="offcanvas offcanvas-custom offcanvas-end"
+          tabindex="-1"
+          id="offcanvasBottom"
+          aria-labelledby="offcanvasBottomLabel"
+        >
+          <div class="offcanvas-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body small">
+            <!-- Table Goes in here  -->
+
+            <div class="container mt-0">
+              <h2>My Sales</h2>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>American Khaki</td>
+                    <td>KSH1900.99</td>
+                  </tr>
+                  <tr>
+                    <td>Rubber Shoes</td>
+                    <td>KSH290.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Nike Air-max</td>
+                    <td>KSH1500.99</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    
+         
+            <li class="nav-item">
+              <span class="material-symbols-outlined"> logout </span>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://127.0.0.1:5500/frontend/login/index.html#"
+                >Log-out</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="sideNav">
+        <div class="brandLogo">
+          <span class="material-symbols-outlined logo"> diversity_3 </span>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/login/index.html">linkUP</a>
+        </div>
+        <div class="menuItem">
+          <span class="material-symbols-outlined"> home_pin </span>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/user-dashboard/index.html">Home</a>
+        </div>
+        <div class="menuItem">
+          <span class="material-symbols-outlined"> post </span>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/my-posts/index.html">My Posts</a>
+        </div>
+
+        
+
+        <div class="menuItem">
+          <span class="material-symbols-outlined"> storefront </span>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/market-place/index.html">Market Place</a>
+        </div>
+        <div class="menuItem">
+          <span class="material-symbols-outlined"> manage_accounts </span>
+          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/profile/index.html">Profile</a>
+        </div>
+
+        <div class="menuItem">
+          <span class="material-symbols-outlined"> logout </span>
+          <a
+            class="navbar-brand"
+            href="http://127.0.0.1:5500/frontend/login/index.html"
+            >Log-out</a
+          >
+        </div>
+      </div>
+      <div class="mainContent">
+        <div class="card card-custom" style="width: 18rem">
+          <div class="card-body">
+            <div class="card-header">
+              <span class="material-symbols-outlined"> person </span>
+              <a class="nav-link active" aria-current="page" href="#">
+                @Mophat</a
+              >
+            </div>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <img
+            class="card-img-top img-custom"
+            src="https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            alt="Card image cap"
+          />
+ 
+          
+          <div class="card-footer">
+            <div class="actions">
+              <span class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+              > edit </span>
+              <a class="nav-link active" aria-current="page" href="#">Edit</a>
+            </div>
+            <div class="actions">
+              <!-- Button trigger modal -->
+              <span
+              class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+              >
+                delete
+              </span>
+              <a class="nav-link active" aria-current="page" href="#">Delete</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-custom" style="width: 18rem">
+          <div class="card-body">
+            <div class="card-header">
+              <span class="material-symbols-outlined"> person </span>
+              <a class="nav-link active" aria-current="page" href="#">
+                @Mophat</a
+              >
+            </div>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <img
+            class="card-img-top img-custom"
+            src="https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            alt="Card image cap"
+          />
+ 
+          
+          <div class="card-footer">
+            <div class="actions">
+              <span class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+              > edit </span>
+              <a class="nav-link active" aria-current="page" href="#">Edit</a>
+            </div>
+            <div class="actions">
+              <!-- Button trigger modal -->
+              <span
+              class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+              >
+                delete
+              </span>
+              <a class="nav-link active" aria-current="page" href="#">Delete</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-custom" style="width: 18rem">
+          <div class="card-body">
+            <div class="card-header">
+              <span class="material-symbols-outlined"> person </span>
+              <a class="nav-link active" aria-current="page" href="#">
+                @Mophat</a
+              >
+            </div>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <img
+            class="card-img-top img-custom"
+            src="https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            alt="Card image cap"
+          />
+ 
+          
+          <div class="card-footer">
+            <div class="actions">
+              <span class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+              > edit </span>
+              <a class="nav-link active" aria-current="page" href="#">Edit</a>
+            </div>
+            <div class="actions">
+              <!-- Button trigger modal -->
+              <span
+              class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+              >
+                delete
+              </span>
+              <a class="nav-link active" aria-current="page" href="#">Delete</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-custom" style="width: 18rem">
+          <div class="card-body">
+            <div class="card-header">
+              <span class="material-symbols-outlined"> person </span>
+              <a class="nav-link active" aria-current="page" href="#">
+                @Mophat</a
+              >
+            </div>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <img
+            class="card-img-top img-custom"
+            src="https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            alt="Card image cap"
+          />
+ 
+          
+          <div class="card-footer">
+            <div class="actions">
+              <span class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+              > edit </span>
+              <a class="nav-link active" aria-current="page" href="#">Edit</a>
+            </div>
+            <div class="actions">
+              <!-- Button trigger modal -->
+              <span
+              class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+              >
+                delete
+              </span>
+              <a class="nav-link active" aria-current="page" href="#">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- Popover that displays the comments  -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasComments" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Comments</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+        
+          <div class="sent">
+            <div class="card card-custom" style="width: 18rem">
+              <div class="card-body">
+                <div class="card-header">
+                  <span class="material-symbols-outlined"> person </span>
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >@John</a
+                  >
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <div class="card-footer">
+                  <span class="material-symbols-outlined"> edit </span>
+                  <span class="material-symbols-outlined"> delete </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recieved">
+            <div class="card card-custom" style="width: 18rem">
+              <div class="card-body">
+                <div class="card-header">
+                  <span class="material-symbols-outlined"> person </span>
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >@Mike</a
+                  >
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <div class="card-footer">
+                  <span class="material-symbols-outlined"> delete </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sent">
+            <div class="card card-custom" style="width: 18rem">
+              <div class="card-body">
+                <div class="card-header">
+                  <span class="material-symbols-outlined"> person </span>
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >@John</a
+                  >
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <div class="card-footer">
+                  <span class="material-symbols-outlined"> edit </span>
+                  <span class="material-symbols-outlined"> delete </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recieved">
+            <div class="card card-custom" style="width: 18rem">
+              <div class="card-body">
+                <div class="card-header">
+                  <span class="material-symbols-outlined"> person </span>
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >@Mike</a
+                  >
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <div class="card-footer">
+                  <span class="material-symbols-outlined"> delete </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sent">
+            <div class="card card-custom" style="width: 18rem">
+              <div class="card-body">
+                <div class="card-header">
+                  <span class="material-symbols-outlined"> person </span>
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >@John</a
+                  >
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <div class="card-footer">
+                  <span class="material-symbols-outlined"> edit </span>
+                  <span class="material-symbols-outlined"> delete </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recieved">
+            <div class="card card-custom" style="width: 18rem">
+              <div class="card-body">
+                <div class="card-header">
+                  <span class="material-symbols-outlined"> person </span>
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >@Mike</a
+                  >
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <div class="card-footer">
+                  <span class="material-symbols-outlined"> delete </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+    
+
+    </div>
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
