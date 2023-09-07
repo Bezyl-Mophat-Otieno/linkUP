@@ -1,0 +1,20 @@
+name: CI/CD Automated Tests
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repositories Code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18.x"
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test
