@@ -108,7 +108,7 @@
   align-items: center;
 }
 
-.recieved .card-custom {
+.comment .card-custom {
   background-color: #15181c;
   color: white;
   margin-top: 5vh;
@@ -116,7 +116,7 @@
   border-radius: 20px 20px 20px 0px;
 }
 
-.sent .card-custom {
+.comment .card-custom {
   background-color: #15181c;
   color: white;
   margin-top: 5vh;
@@ -198,7 +198,7 @@
     width: 90% !important;
   }
 
-  .recieved .card-custom {
+  .comment .card-custom {
     background-color: #15181c;
     color: white;
     margin-top: 5vh;
@@ -206,7 +206,7 @@
     border-radius: 20px 20px 20px 0px;
   }
 
-  .sent .card-custom {
+  .comment .card-custom {
     background-color: #15181c;
     color: white;
     margin-top: 5vh;

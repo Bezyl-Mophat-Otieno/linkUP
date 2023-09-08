@@ -1,4 +1,4 @@
-import { sqlConfig } from "../config/db.js";
+import { sqlConfig } from "../config/db.ts";
 import mssql, { Request } from "mssql";
 
 interface dataInput {

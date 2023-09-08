@@ -280,13 +280,13 @@
         <div class="menuItem">
           <span class="material-symbols-outlined"> logout </span>
           <a
+            id="logoutBtn"
             class="navbar-brand"
             href="http://127.0.0.1:5500/frontend/login/index.html#"
             >Log-out</a
           >
         </div>
       </div>
-
       <div class="mainContent">
         <form class="d-flex justify-content-center" role="search">
           <input
@@ -299,164 +299,7 @@
             <span class="material-symbols-outlined"> send </span>
           </button>
         </form>
-        <div class="card card-custom" style="width: 18rem">
-          <div class="card-body">
-            <div class="card-header">
-              <span class="material-symbols-outlined"> person </span>
-              <a class="nav-link active" aria-current="page" href="#">
-                @Mophat</a
-              >
-            </div>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-          <a
-            class="post"
-            href="http://127.0.0.1:5500/frontend/single-post/index.html"
-          >
-            <img
-              class="card-img-top img-custom"
-              src="https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-              alt="Card image cap"
-            />
-          </a>
-          <div class="card-footer">
-            <div class="actions">
-              <span class="material-symbols-outlined"> thumb_up </span>
-              <a class="nav-link active" aria-current="page" href="#">300</a>
-            </div>
-            <div class="actions">
-              <!-- Button trigger modal -->
-              <span
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                class="material-symbols-outlined"
-              >
-                comment
-              </span>
-              <a class="nav-link active" aria-current="page" href="#">200</a>
-            </div>
-            <div class="actions">
-              <span class="material-symbols-outlined"> share </span>
-              <a class="nav-link active" aria-current="page" href="#"></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Comments Modal -->
-
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body modal-custom">
-                <form action="" class="updateForm">
-                  <textarea
-                    name=""
-                    placeholder="Share your thoughts"
-                    id=""
-                    cols="30"
-                    rows="5"
-                  ></textarea>
-
-                  <button type="submit" class="btn btn-secondary">
-                    Comment
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card card-custom" style="width: 18rem">
-          <div class="card-body">
-            <div class="card-header">
-              <span class="material-symbols-outlined"> person </span>
-              <a class="nav-link active" aria-current="page" href="#">@John</a>
-            </div>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-          <a
-            class="post"
-            href="http://127.0.0.1:5500/frontend/single-post/index.html"
-          >
-            <img
-              class="card-img-top img-custom"
-              src="https://images.pexels.com/photos/12165333/pexels-photo-12165333.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-              alt="Card image cap"
-            />
-          </a>
-          <div class="card-footer">
-            <div class="actions">
-              <span class="material-symbols-outlined"> thumb_up </span>
-              <a class="nav-link active" aria-current="page" href="#">300</a>
-            </div>
-            <div class="actions">
-              <span
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                class="material-symbols-outlined"
-              >
-                comment
-              </span>
-              <a class="nav-link active" aria-current="page" href="#">200</a>
-            </div>
-            <div class="actions">
-              <span class="material-symbols-outlined"> share </span>
-              <a class="nav-link active" aria-current="page" href="#"></a>
-            </div>
-          </div>
-        </div>
-        <div class="card card-custom" style="width: 18rem">
-          <div class="card-body">
-            <div class="card-header">
-              <span class="material-symbols-outlined"> person </span>
-              <a class="nav-link active" aria-current="page" href="#">@John</a>
-            </div>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="actions">
-            <span class="material-symbols-outlined"> thumb_up </span>
-            <a class="nav-link active" aria-current="page" href="#">300</a>
-          </div>
-          <div class="actions">
-            <span
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              class="material-symbols-outlined"
-            >
-              comment
-            </span>
-            <a class="nav-link active" aria-current="page" href="#">200</a>
-          </div>
-          <div class="actions">
-            <span class="material-symbols-outlined"> share </span>
-            <a class="nav-link active" aria-current="page" href="#"></a>
-          </div>
-        </div>
+        <div class="posts"></div>
       </div>
 
       <div class="rightNav">
