@@ -7,7 +7,7 @@ window.onload = async () => {
 };
 
 const postsContainer = document.querySelector(".posts");
-const logoutBtn = document.querySelector("#logoutBtn");
+const logoutBtn = document.querySelector("#logout");
 
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("token");

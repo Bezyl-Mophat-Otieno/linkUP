@@ -12,7 +12,7 @@ window.onload = () => {
   fetchUser(token);
 };
 
-const logoutBtn = document.querySelector("#logoutBtn");
+const logoutBtn = document.querySelector("#logout");
 
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("token");
