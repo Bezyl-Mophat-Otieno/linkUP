@@ -49,9 +49,13 @@
             </li>
             <li class="nav-item">
               <span class="material-symbols-outlined"> person_search </span>
-              <a class="nav-link active" aria-current="page" href="#"
-                >Explore</a
+              <a
+                href="http://127.0.0.1:5500/frontend/explore/index.html"
+                class="nav-link active explore"
+                aria-current="page"
               >
+                Explore
+              </a>
             </li>
             <li class="nav-item">
               <span class="material-symbols-outlined"> manage_accounts </span>
@@ -61,99 +65,6 @@
                 >Profile</a
               >
             </li>
-            <li class="nav-item">
-              <span class="material-symbols-outlined"> person_search </span>
-              <a
-                class="nav-link"
-                data-bs-toggle="offcanvas"
-                href="#offcanvasExample"
-                role="button"
-                aria-controls="offcanvasExample"
-              >
-                Followers
-              </a>
-            </li>
-
-            <!-- offcanvas goes here  -->
-
-            <div
-              class="offcanvas offcanvas-start offcanvas-custom"
-              tabindex="-1"
-              id="offcanvasExample"
-              aria-labelledby="offcanvasExampleLabel"
-            >
-              <div class="offcanvas-header">
-                <button class="btn btn-secondary" type="button">
-                  Followers
-                </button>
-                <button class="btn btn-secondary" type="button">
-                  Following
-                </button>
-                <button
-                  type="button"
-                  class="btn-close btn-close-custom"
-                  data-bs-dismiss="offcanvas"
-                  aria-label="Close"
-                ></button>
-              </div>
-
-              <div class="offcanvas-body">
-                <form class="d-flex" role="search">
-                  <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Who are you looking for ?"
-                    aria-label="Search"
-                  />
-                  <button class="btn btn-outline-primary" type="submit">
-                    Search
-                  </button>
-                </form>
-                <h5>Who to follow</h5>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-              </div>
-            </div>
 
             <li class="nav-item">
               <span class="material-symbols-outlined">
@@ -228,7 +139,12 @@
         </div>
         <div class="menuItem">
           <span class="material-symbols-outlined"> travel_explore </span>
-          <a class="navbar-brand" href="#">Explore</a>
+          <a
+            class="nav-link active explore"
+            href="http://127.0.0.1:5500/frontend/explore/index.html"
+            aria-current="page"
+            >Explore</a
+          >
         </div>
         <div class="menuItem">
           <span class="material-symbols-outlined"> notifications_active </span>
@@ -254,10 +170,7 @@
             >Profile</a
           >
         </div>
-        <div class="menuItem">
-          <span class="material-symbols-outlined"> follow_the_signs </span>
-          <a class="navbar-brand" href="#">Followers</a>
-        </div>
+
         <div class="menuItem">
           <span class="material-symbols-outlined">
             local_convenience_store
@@ -289,17 +202,47 @@
         </div>
       </div>
       <div class="mainContent">
-        <form class="d-flex justify-content-center" role="search">
+        <form class="d-flex justify-content-center postForm" role="search">
           <input
-            class="form-control ms-2"
+            class="form-control ms-2 postInput"
             type="text"
             placeholder="What's on your mind ?"
             aria-label="Search"
           />
-          <button class="btn" type="submit">
+
+          <button class="btn postBtn" type="submit">
             <span class="material-symbols-outlined"> send </span>
           </button>
         </form>
+
+        <div class="uploads">
+          <div class="img-upload">
+            <!-- Hidden file input -->
+            <input
+              type="file"
+              id="imgInput"
+              accept="image/*"
+              style="display: none"
+            />
+            <!-- Custom label with a Google icon -->
+            <label for="imgInput" class="custom-file-input">
+              <i class="material-symbols-outlined">cloud_upload</i>
+            </label>
+          </div>
+          <div class="video-upload">
+            <!-- Hidden file input -->
+            <input
+              type="file"
+              id="videoInput"
+              accept="video/*"
+              style="display: none"
+            />
+            <!-- Custom label with a Google icon -->
+            <label for="videoInput" class="custom-file-input">
+              <i class="material-symbols-outlined">videocam</i>
+            </label>
+          </div>
+        </div>
         <div class="posts"></div>
       </div>
 
@@ -315,36 +258,7 @@
             <span class="material-symbols-outlined"> search </span>
           </button>
         </form>
-        <div class="container">
-          <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@Leornado</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
-          </div>
-          <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@Leornado</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
-          </div>
-          <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@Leornado</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
-          </div>
-          <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@Leornado</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
-          </div>
-        </div>
+        <div class="container"></div>
       </div>
     </div>
 

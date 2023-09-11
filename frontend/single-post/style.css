@@ -124,6 +124,12 @@
   border-radius: 20px 20px 20px 0px;
 }
 
+.material-symbols-outlined {
+  color: #6e767d;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 412px) {
   .navbar {
     display: contents;

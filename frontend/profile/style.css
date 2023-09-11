@@ -176,6 +176,7 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
 }
 .followers {
   color: #6e767d;
@@ -183,6 +184,7 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
 }
 .modal-custom {
   background-color: #15181c !important;
@@ -210,6 +212,14 @@
 .updateForm button {
   width: 30vw;
   height: 6vh;
+}
+.updateForm textarea {
+  width: 30vw;
+  height: 10vh;
+  background-color: #1e1f24;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .rightNav {
@@ -289,6 +299,31 @@ table {
 th {
   background-color: white;
   color: black;
+}
+
+/* Style for the custom file input label */
+.custom-file-input {
+  margin-top: 3vh;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1e1f24;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-input:hover {
+  background-color: black;
+  color: white;
+}
+.username {
+  color: white;
+  font-weight: bold;
+}
+
+.bio {
+  color: #6e767d;
 }
 
 /* Sumsung Galaxy Note 20 */

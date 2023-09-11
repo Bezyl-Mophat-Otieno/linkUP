@@ -110,20 +110,26 @@
 
 .comment .card-custom {
   background-color: #15181c;
+  border: 2px solid #6e767d;
   color: white;
   margin-top: 5vh;
-  width: 15vw !important;
+  width: 20vw !important;
   border-radius: 20px 20px 20px 0px;
 }
-
-.comment .card-custom {
-  background-color: #15181c;
-  color: white;
-  margin-top: 5vh;
-  width: 15vw !important;
-  border-radius: 20px 20px 20px 0px;
+.subCommentContainer {
+  margin-top: 3vh;
+  width: 30vw;
+  border: 1px solid #6e767d;
+  border-radius: 20px;
+  height: 20vh;
 }
 
+.material-symbols-outlined {
+  cursor: pointer;
+}
+.modal-custom textarea {
+  background-color: white;
+}
 @media screen and (max-width: 412px) {
   .navbar {
     display: contents;
@@ -195,15 +201,7 @@
     background-color: #15181c;
     color: white;
     margin-top: 5vh;
-    width: 90% !important;
-  }
-
-  .comment .card-custom {
-    background-color: #15181c;
-    color: white;
-    margin-top: 5vh;
-    width: 90% !important;
-    border-radius: 20px 20px 20px 0px;
+    width: 20vw !important;
   }
 
   .comment .card-custom {

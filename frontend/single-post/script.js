@@ -82,6 +82,26 @@ const fetchPost = async (postId) => {
   }
 };
 
+const deleteComment = async (commentId) => {
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/comments/delete/${commentId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const data = await res.json();
+    alert("Comment deleted successfully");
+    window.location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const fetchPostComments = async (postId) => {
   try {
     const res = await fetch(
@@ -104,12 +124,14 @@ const fetchPostComments = async (postId) => {
         console.log(comment);
         console.log(loggedInUserId == comment.user_id);
         html += `
-        <div class="comment">
+        <div class="comment" >
         <div class="card card-custom" style="width: 18rem">
           <div class="card-body">
             <div class="card-header">
               <span class="material-symbols-outlined"> person </span>
-              <a class="nav-link active" aria-current="page" href="#"
+              <a class="nav-link active" aria-current="page" href=http://127.0.0.1:5500/frontend/single-comment/index.html?id=${
+                comment.comment_id
+              }
                 >@${comment.username}</a
               >
             </div>
@@ -117,11 +139,10 @@ const fetchPostComments = async (postId) => {
               ${comment.content}
             </p>
             <div class="card-footer">
-              <span class="material-symbols-outlined"> edit </span>
               <span class="material-symbols-outlined"> favorite </span>
               ${
                 loggedInUserId == comment.user_id
-                  ? `<span class="material-symbols-outlined"> delete </span>`
+                  ? `<span class="material-symbols-outlined" commentId=${comment.comment_id} > delete </span>`
                   : ``
               }
         
@@ -137,3 +158,10 @@ const fetchPostComments = async (postId) => {
     alert(error);
   }
 };
+
+commentContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("material-symbols-outlined")) {
+    const commentId = e.target.getAttribute("commentId");
+    deleteComment(commentId);
+  }
+});

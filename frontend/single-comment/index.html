@@ -57,135 +57,19 @@
             <div class="nav-item">
               <span class="material-symbols-outlined"> work_history </span>
               <a class="nav-link active" type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasOrders"
-              aria-controls="offcanvasRight" href="#">Orders</a>
+              href="http://127.0.0.1:5500/frontend/Orders/index.html">Orders</a>
               </button>
             </div>
 
-            <div
-          class="offcanvas offcanvas-custom offcanvas-end"
-          tabindex="-1"
-          id="offcanvasOrders"
-          aria-labelledby="offcanvasBottomLabel"
-        >
-          <div class="offcanvas-header">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body small">
-            <!-- Table Goes in here  -->
-
-            <div class="container mt-0">
-              <h2>My Orders</h2>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>American Khaki</td>
-                    <td>KSH1900.99</td>
-                  </tr>
-                  <tr>
-                    <td>Rubber Shoes</td>
-                    <td>KSH290.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        
-
-        <!-- Sales in Mobile Version -->
+         
         <div class="nav-item">
           <span class="material-symbols-outlined"> real_estate_agent </span>
           <a
             class="nav-link active"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasBottom"
-            aria-controls="offcanvasRight"
-            class="material-symbols-outlined"
-            href="#"
+            href="http://127.0.0.1:5500/frontend/sales/index.html"
             >Sales</a
           >
         </div>
-
-        <div
-          class="offcanvas offcanvas-custom offcanvas-end"
-          tabindex="-1"
-          id="offcanvasBottom"
-          aria-labelledby="offcanvasBottomLabel"
-        >
-          <div class="offcanvas-header">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body small">
-            <!-- Table Goes in here  -->
-
-            <div class="container mt-0">
-              <h2>My Sales</h2>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>American Khaki</td>
-                    <td>KSH1900.99</td>
-                  </tr>
-                  <tr>
-                    <td>Rubber Shoes</td>
-                    <td>KSH290.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-    
-         
             <li class="nav-item">
               <span class="material-symbols-outlined"> logout </span>
               <a
@@ -238,8 +122,11 @@
         </div>
       </div>
       <div class="mainContent">
-        <div class="post">
+        <div class="commentContainer">
 
+        </div>
+        <div class="subCommentContainer">
+          
         </div>
         <!-- Popover that displays the comments  -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasComments" aria-labelledby="offcanvasRightLabel">
@@ -247,7 +134,7 @@
         <h5 class="offcanvas-title" id="offcanvasRightLabel">Comments</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body comments">
+        <div class="offcanvas-body likes">
         </div>
       </div>
     <script src="script.js"></script>

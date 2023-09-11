@@ -21,9 +21,9 @@ app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/comments", commentRouter);
 app.use("/api/v1/followers", followerRouter);
 
-app.use("/", (req: Request, res: Response) => {
-  res.send("Server is running successfully");
-});
+// app.use("/", (req: Request, res: Response) => {
+//   res.send("Server is running successfully");
+// });
 app.listen(PORT, async () => {
   console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
   await dbConnection();

@@ -5,14 +5,14 @@ CREATE OR ALTER PROCEDURE updateUser
     @deleted bit = NULL,
     @password varchar(250) = NULL,
     @profile varchar(250) = NULL,
-    @role varchar(250) 
+    @bio varchar(250) = NULL
 AS BEGIN
     UPDATE userTable
     SET username = COALESCE(@username, username),
         email = COALESCE(@email, email),
-        role = COALESCE(@role, role),
         deleted = COALESCE(@deleted, deleted),
         password = COALESCE(@password, password),
-        profile = COALESCE(@profile, profile)
+        profile = COALESCE(@profile, profile),
+        bio = COALESCE(@bio, bio)
     WHERE id = @id
 END

@@ -2,9 +2,10 @@ window.onload = async () => {
   localStorage.getItem("token")
     ? null
     : (window.location.href = "/frontend/login/index.html");
-  const postId = window.location.search.split("=")[1];
-  await fetchPost(postId);
-  await fetchPostComments(postId);
+  const commentId = window.location.search.split("=")[1];
+  console.log(commentId);
+  await fetchComment(commentId);
+  // await fetchPostComments(postId);
 };
 const logoutBtn = document.querySelector("#logout");
 
@@ -13,13 +14,13 @@ logoutBtn.addEventListener("click", () => {
   window.location.href = "/frontend/login/index.html";
 });
 
-const postContainer = document.querySelector(".post");
-const commentContainer = document.querySelector(".comments");
+const commentContainer = document.querySelector(".commentContainer");
+const likesContainer = document.querySelector(".likes");
 
-const fetchPost = async (postId) => {
+const fetchComment = async (commentId) => {
   try {
     const res = await fetch(
-      `http://localhost:5000/api/v1/posts/get/${postId}`,
+      `http://localhost:5000/api/v1/comments/comment/${commentId}`,
       {
         method: "GET",
         headers: {
@@ -31,58 +32,192 @@ const fetchPost = async (postId) => {
     const data = await res.json();
     let html = "";
     if (data.status == "success") {
-      const post = data.post;
-      console.log(post);
+      const comment = data.comment;
+      console.log(comment);
       html += `
-        <div class="card card-custom" style="width: 18rem">
+      <div class="comment" }>
+      <div class="card card-custom" style="width: 18rem">
         <div class="card-body">
           <div class="card-header">
             <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#">
-              @${post.username}</a
+            <a class="nav-link active" aria-current="page" href="#"
+              >@${comment.username}</a
             >
           </div>
           <p class="card-text">
-            ${post.content}
+            ${comment.content}
           </p>
-        </div>
-        <img
-          class="card-img-top img-custom"
-          src="https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-          alt="Card image cap"
-        />
+          <div class="card-footer" commentId=${comment.comment_id}>
+            <span class="material-symbols-outlined modal-trigger edit" 
+            data-bs-toggle="modal"
+            data-bs-target="#editModal"> edit </span>
 
-        
-        <div class="card-footer">
-          <div class="actions">
-            <span class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
-            > favorite</span>
-            <a class="nav-link active" aria-current="page" href="#">300</a>
-          </div>
-          <div class="actions">
-            <!-- Button trigger modal -->
-            <span
-            class=" material-symbols-outlined" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
-            >
-              comment
-            </span>
-            <a class="nav-link active" aria-current="page" href="#">200</a>
-          </div>
-          <div class="actions">
-            <span class="material-symbols-outlined"> share </span>
-            <a class="nav-link active" aria-current="page" href="#"></a>
+            ${
+              comment.subComment
+                ? ``
+                : ` 
+            <span class="material-symbols-outlined modal-trigger"
+            data-bs-toggle="modal"
+            data-bs-target="#commentModal"
+            > comment </span>`
+            }
+           
+            <span class="material-symbols-outlined modal-trigger"
+            data-bs-toggle="modal"
+            data-bs-target="#likes"
+            > favorite </span>      
           </div>
         </div>
       </div>
-        `;
+      </div> 
+
+      <!-- Comments Modal -->
+      <div
+        class="modal fade"
+        id="commentModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body modal-custom">
+              <form action="" class="updateForm" commentId=${
+                comment.comment_id
+              }>
+                <textarea
+                  name=""
+                  placeholder="Share your thoughts"
+                  id=""
+                  cols="30"
+                  rows="5"
+                  class="form-control"
+                ></textarea>
+    
+                <button type="submit" class="btn btn-secondary">
+                  Add Subcomment
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Comment Modal -->
+      <div
+        class="modal fade"
+        id="editModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body modal-custom">
+              <form action="" class="updateForm" commentId=${
+                comment.comment_id
+              }>
+                <textarea
+                  name=""
+                  placeholder="Share your thoughts"
+                  id=""
+                  cols="30"
+                  rows="5"
+                  class="form-control"
+                ></textarea>
+    
+                <button type="submit"  class="btn btn-secondary">
+                  Edit Comment
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comments Like -->
+
+
+      <div
+        class="modal fade"
+        id="likes"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body modal-custom">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+      `;
     }
-    postContainer.innerHTML = html;
+    commentContainer.innerHTML = html;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+commentContainer.addEventListener("click", async (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains("edit")) {
+    const commentId = e.target.parentElement.getAttribute("commentId");
+    const content = e.target.parentElement.firstChild.value();
+    console.log(content);
+  }
+});
+
+const updateComment = async (commentId, content) => {
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/comments/update/${commentId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(content),
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+    alert("comment Updated successfully");
   } catch (error) {
     alert(error);
   }
 };
 
-const fetchPostComments = async (postId) => {
+const fetchCommentLikers = async (postId) => {
   try {
     const res = await fetch(
       `http://localhost:5000/api/v1/comments/post/${postId}`,
@@ -131,7 +266,7 @@ const fetchPostComments = async (postId) => {
         </div> 
         `;
       });
-      commentContainer.innerHTML = html;
+      likesContainer.innerHTML = html;
     }
   } catch (error) {
     alert(error);

@@ -175,6 +175,7 @@
 }
 
 .card-footer {
+  margin-top: 3vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -182,7 +183,8 @@
 
 .actions {
   display: flex;
-  /* gap: 20px */
+  justify-content: space-between;
+  gap: 20px;
   align-items: center;
 }
 
@@ -190,6 +192,35 @@
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
+}
+.explore {
+  cursor: pointer;
+}
+
+/* Style for the custom file input label */
+.custom-file-input {
+  margin-top: 3vh;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1e1f24;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-input:hover {
+  background-color: black;
+  color: white;
+}
+
+.uploads {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.disabled {
+  pointer-events: none;
 }
 
 @media screen and (max-width: 412px) {
@@ -293,6 +324,10 @@
     border-radius: 20px 20px 0px 0px;
   }
   .img-custom {
+    height: 30vh;
+    object-fit: cover;
+  }
+  .video-custom {
     height: 20vh;
     object-fit: cover;
   }

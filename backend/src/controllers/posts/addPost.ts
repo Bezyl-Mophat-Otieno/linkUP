@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import { v4 } from "uuid";
 
 const addPost = async (req: Request, res: Response) => {
-  const { content, image } = req.body;
+  const { content, image, video } = req.body;
   const post_id = v4();
 
   const { id } = req.params;
@@ -15,13 +15,15 @@ const addPost = async (req: Request, res: Response) => {
     });
   }
   // Either the image field or the content field must be filled
-  if (!content && !image) {
+  if (!content && !image && !video) {
     return res.status(StatusCodes.BAD_REQUEST).json({
-      message: "Either the image field or the content field must be filled",
+      message:
+        "Either the image field , video field or the content field must be filled",
     });
   }
 
   try {
+    console.log(req.body);
     const result = await DB.executeProcedure("addPost", {
       ...req.body,
       post_id,
