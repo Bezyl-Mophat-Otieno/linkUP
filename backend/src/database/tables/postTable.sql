@@ -10,3 +10,4 @@ CREATE TABLE postTable (
 
 ALTER TABLE postTable ADD video VARCHAR(255) NULL;
 
+DELETE from postTable;

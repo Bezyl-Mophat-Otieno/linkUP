@@ -92,12 +92,17 @@
 }
 
 .mainContent {
-  width: 40vw;
+  width: 60vw;
   height: 70vh;
   border: 2px solid #6e767d;
   overflow-y: scroll;
   overflow-x: hidden;
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
 }
 
 .explore {
@@ -112,7 +117,7 @@
 
 /* Style for the table */
 .follower-table {
-  width: 100%;
+  width: 20vw;
   border-collapse: collapse;
 }
 
@@ -128,7 +133,8 @@
 .follower-table td {
   border: 1px solid #444; /* Border for each cell */
   padding: 10px;
-  color: #ccc; /* Light text color for table data */
+  color: #ccc;
+  /* Light text color for table data */
 }
 
 /* Style for alternating row colors */
@@ -138,6 +144,39 @@
 
 /* Hover effect on rows */
 .follower-table tbody tr:hover {
+  background-color: #666; /* Darker background on hover */
+}
+
+/* Style for the table */
+.following-table {
+  width: 20vw;
+  border-collapse: collapse;
+}
+
+/* Style for table headers */
+.following-table th {
+  background-color: #555; /* Darker background for headers */
+  color: #fff; /* Light text color for headers */
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style for table rows */
+.following-table td {
+  border: 1px solid #444; /* Border for each cell */
+  padding: 10px;
+  color: #ccc; /* Light text color for table data */
+}
+
+/* Style for alternating row colors */
+.following-table tbody tr:nth-child(even) {
+  background-color: #444; /* Slightly darker background for even rows */
+  height: 8vh;
+  width: 15vw;
+}
+
+/* Hover effect on rows */
+.following-table tbody tr:hover {
   background-color: #666; /* Darker background on hover */
 }
 

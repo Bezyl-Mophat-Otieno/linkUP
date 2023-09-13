@@ -124,7 +124,16 @@
   height: 20vh;
 }
 
+.commentForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+  margin-top: 3vh;
+}
+
 .material-symbols-outlined {
+  color: #6e767d;
   cursor: pointer;
 }
 .modal-custom textarea {

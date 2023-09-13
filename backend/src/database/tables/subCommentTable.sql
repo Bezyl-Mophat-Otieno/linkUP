@@ -8,3 +8,5 @@ CREATE TABLE subCommentTable (
 );
 
 SELECT * FROM subCommentTable;
+
+DELETE FROM subCommentTable;

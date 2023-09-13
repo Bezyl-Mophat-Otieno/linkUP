@@ -126,23 +126,19 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 20px;
-  width: 100%;
-  margin-top: 5vh;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 .persons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-  margin-top: 5vh;
   color: white;
+  width: 30vw;
 }
 
 .material-symbols-outlined {
@@ -163,7 +159,7 @@
 }
 .img-custom {
   height: 40vh;
-  object-fit: cover;
+  object-fit: contain;
 }
 .card-header {
   background-color: #1e1f24;
@@ -193,8 +189,21 @@
   color: white;
   font-size: 1.5rem;
 }
+.post .img-custom {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.posts h1 {
+  color: white;
+}
+
 .explore {
   cursor: pointer;
+}
+.content-link {
+  color: white;
+  text-decoration: solid;
 }
 
 /* Style for the custom file input label */
@@ -221,6 +230,18 @@
 }
 .disabled {
   pointer-events: none;
+}
+.commentInput {
+  background-color: #1e1f24;
+  color: #6e767d;
+  border: 2px solid #6e767d;
+}
+.commentInput::placeholder {
+  color: #6e767d;
+}
+.video {
+  height: 80vh;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 412px) {
@@ -323,10 +344,7 @@
     border: 1px solid #6e767d;
     border-radius: 20px 20px 0px 0px;
   }
-  .img-custom {
-    height: 30vh;
-    object-fit: cover;
-  }
+
   .video-custom {
     height: 20vh;
     object-fit: cover;

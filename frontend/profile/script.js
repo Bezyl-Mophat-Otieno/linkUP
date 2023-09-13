@@ -2,18 +2,21 @@ const sales = document.querySelector("#sales");
 const posts = document.querySelector("#posts");
 const orders = document.querySelector("#orders");
 const rightNav = document.querySelector(".rightNav");
-const followersBtn = document.querySelector(".followersBtn");
 const profileSection = document.querySelector(".profileSection");
 const followers = document.querySelector(".followers");
 const following = document.querySelector(".following");
 const profileImage = document.querySelector("#imgInput");
+const updateForm = document.querySelector(".updateForm");
 window.onload = async () => {
   const token = localStorage.getItem("token");
   if (!token) {
     return (window.location.href = "/frontend/login/index.html");
   }
-  fetchUser(token);
-  await fetchFollowers();
+  await pageInitializer();
+};
+
+const pageInitializer = async () => {
+  await fetchUser(localStorage.getItem("token"));
 };
 
 followers.addEventListener("click", () => {});
@@ -57,12 +60,13 @@ const fetchUser = async (token) => {
 
     const data = await res.json();
     const user = data.user;
-    console.log(data);
+    console.log(user);
     profileSection.innerHTML = `
+
 
     <img src=${user.profile} alt="" srcset="">
     <h5 class="username">@${user.username}</h5>
-    <h5 class="bio">Exploring the world one step at a time 🌍 | Nature lover 🌿 | Adventure seeker 🏞️ | Food enthusiast 🍔 | Bookworm 📚 | Music addict 🎵 | Dreamer ✨ | Life is a beautiful journey, and I'm here to share it with you! 🌟.</h5>
+    <h5 class="bio">${user.bio}</h5>
 
     `;
   } catch (error) {
@@ -111,7 +115,7 @@ profileImage.addEventListener("change", async (event) => {
     console.log(imgData);
 
     try {
-      const user_id = JSON.pa(localStorage.getItem("user_id"));
+      const user_id = JSON.parse(localStorage.getItem("user_id"));
       const url = `http://localhost:5000/api/v1/users/update/${user_id}`;
       console.log(url);
       const res = await fetch(url, {
@@ -124,10 +128,46 @@ profileImage.addEventListener("change", async (event) => {
 
       const data = await res.json();
 
-      console.log(data);
+      await pageInitializer();
       alert("Profile Updated Successfully");
     } catch (error) {
       console.log(error);
     }
   }
 });
+
+const updateUser = async (event) => {
+  event.preventDefault();
+  const username = document.querySelector("#username").value;
+  const bio = document.querySelector("#bio").value;
+  const email = document.querySelector(".email").value;
+  console.log(username, bio, email);
+
+  const updateData = {
+    username: username === "" ? null : username,
+    bio: bio === "" ? null : bio,
+    email: email === "" ? null : email,
+  };
+  console.log(updateData);
+  if (username === null && bio === null && email === null) {
+    return alert("Please fill in the fields you want to update");
+  }
+
+  try {
+    const user_id = JSON.parse(localStorage.getItem("user_id"));
+    const res = await fetch(
+      `http://localhost:5000/api/v1/users/update/${user_id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(updateData),
+      }
+    );
+
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+updateForm.addEventListener("submit", updateUser);

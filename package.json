@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsc",
     "start:dev": "nodemon backend/src/server.ts",
-    "test": "jest --watch "
+    "test": "jest "
   },
   "type": "module",
   "keywords": [],

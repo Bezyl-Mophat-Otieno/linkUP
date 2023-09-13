@@ -9,7 +9,8 @@ const getFollowers = async (req: Request, res: Response) => {
   try {
     const result = await DB.executeProcedure("getFollowers", { user_id: id });
     console.log(result);
-    if (result.rowsAffected[0] > 0) {
+    if (result.recordset.length > 0) {
+      console.log(result.recordset);
       return res.status(200).json({
         message: "Followers retrieved successfully",
         followers: result.recordset,

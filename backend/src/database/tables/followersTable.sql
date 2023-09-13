@@ -8,4 +8,4 @@ CREATE TABLE followerTable
     FOREIGN KEY (followed) REFERENCES userTable (id),
 );
 
--- DROP TABLE followerTable;
+

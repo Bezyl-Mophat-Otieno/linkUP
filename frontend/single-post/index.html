@@ -242,13 +242,23 @@
 
         </div>
         <!-- Popover that displays the comments  -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasComments" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas offcanvas-end" disabled tabindex="-1" id="offcanvasComments" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasRightLabel">Comments</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body comments">
+        <div class="offcanvas-body comments" >
         </div>
+
+
+          <!-- Popover that displays the likes  -->
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLikers" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Comments</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body likes">
+            </div>
       </div>
     <script src="script.js"></script>
     <script

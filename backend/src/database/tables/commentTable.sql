@@ -14,3 +14,5 @@ CREATE TABLE commentTable (
     FOREIGN KEY (user_id) REFERENCES userTable(id)
 );
 
+DELETE FROM commentTable
+

@@ -67,8 +67,22 @@ const fetchComment = async (commentId) => {
             data-bs-target="#likes"
             > favorite </span>      
           </div>
-        </div>
-      </div>
+          </div>
+          </div>
+          <form class="d-flex justify-content-center commentForm" role="search">
+          <input
+            class="form-control ms-2 commentInput"
+            type="text"
+            placeholder="Edit Your Comment "
+            aria-label="Search"
+          />
+      
+          <button class="btn postBtn" type="submit">
+            <span class="material-symbols-outlined send" id=${
+              comment.comment_id
+            } > send </span>
+          </button>
+        </form>
       </div> 
 
       <!-- Comments Modal -->
@@ -111,46 +125,7 @@ const fetchComment = async (commentId) => {
         </div>
       </div>
 
-      <!-- Edit Comment Modal -->
-      <div
-        class="modal fade"
-        id="editModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body modal-custom">
-              <form action="" class="updateForm" commentId=${
-                comment.comment_id
-              }>
-                <textarea
-                  name=""
-                  placeholder="Share your thoughts"
-                  id=""
-                  cols="30"
-                  rows="5"
-                  class="form-control"
-                ></textarea>
-    
-                <button type="submit"  class="btn btn-secondary">
-                  Edit Comment
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
+ 
       <!-- Comments Like -->
 
 
@@ -192,8 +167,23 @@ commentContainer.addEventListener("click", async (e) => {
   e.preventDefault();
   if (e.target.classList.contains("edit")) {
     const commentId = e.target.parentElement.getAttribute("commentId");
-    const content = e.target.parentElement.firstChild.value();
-    console.log(content);
+    console.log(commentId);
+    const updateForm = document.querySelector(".updateForm");
+    const textarea = document.querySelector("textarea");
+    textarea.addEventListener("input", () => {
+      console.log("Hello");
+    });
+  }
+  if (e.target.classList.contains("send")) {
+    const commentInput = document.querySelector(".commentInput");
+    const comment_id = e.target.getAttribute("id");
+    const content = commentInput.value;
+    if (content == "") {
+      alert("Please enter a comment");
+      return;
+    }
+    await updateComment(comment_id, { content });
+    await fetchComment(comment_id);
   }
 });
 

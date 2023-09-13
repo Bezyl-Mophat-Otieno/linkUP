@@ -16,3 +16,5 @@ AS BEGIN
         bio = COALESCE(@bio, bio)
     WHERE id = @id
 END
+
+-- create a variable for the Id

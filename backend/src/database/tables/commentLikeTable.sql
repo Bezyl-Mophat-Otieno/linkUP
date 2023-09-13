@@ -6,3 +6,6 @@ CREATE TABLE commentLikeTable
     FOREIGN KEY (comment_id) REFERENCES commentTable(comment_id),
     FOREIGN KEY (user_id) REFERENCES userTable(id)
 );
+
+
+DELETE FROM commentLikeTable;

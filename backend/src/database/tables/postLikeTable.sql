@@ -6,3 +6,5 @@ CREATE TABLE postLikeTable
     FOREIGN KEY (post_id) REFERENCES postTable(post_id),
     FOREIGN KEY (user_id) REFERENCES userTable(id)
 );
+
+SELECT * FROM postLikeTable;

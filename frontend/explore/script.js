@@ -2,15 +2,33 @@ window.onload = async () => {
   localStorage.getItem("token")
     ? null
     : (window.location.href = "/frontend/login/index.html");
+  await pageInitializer();
+};
+
+// Page initializer
+
+const pageInitializer = async () => {
   // await fetchPosts();
   await explorePosts();
   await fetchUser(localStorage.getItem("token"));
   await fetchNotFollowedUsers();
 };
-
 const postsContainer = document.querySelector(".posts");
 const logoutBtn = document.querySelector("#logout");
 const followers = document.querySelector(".container");
+const postImage = document.querySelector("#imgInput");
+const postVideo = document.querySelector("#videoInput");
+const postForm = document.querySelector(".postForm");
+const videoUploadContainer = document.querySelector(".video-upload");
+const postBtn = document.querySelector(".postBtn");
+const imgUploadContainer = document.querySelector(".img-upload");
+const postInput = document.querySelector(".postInput");
+
+let imgUrl = "";
+let videoUrl = "";
+
+let imgUpload = "";
+let videoUpload = "";
 
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("token");
@@ -29,22 +47,53 @@ const fetchNotFollowedUsers = async () => {
     },
   });
 
+  // Follow a user
+
+  const followUser = async (followed) => {
+    const myId = JSON.parse(localStorage.getItem("user_id"));
+    const data = {
+      follower: myId,
+      followed: followed,
+    };
+    const res = await fetch("http://localhost:5000/api/v1/followers/follow", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        accetp: "application/json",
+      },
+    });
+
+    const response = await res.json();
+
+    console.log(response);
+    alert(response.message);
+  };
+
+  followers.addEventListener("click", async (e) => {
+    if (e.target.classList.contains("btn")) {
+      const followed = e.target.getAttribute("id");
+      followUser(followed);
+      await fetchNotFollowedUsers();
+    }
+  });
+
   const data = await res.json();
   const users = data.followers;
   let html = "";
   users.forEach((user) => {
+    console.log(user);
     html += `
       <div class="persons">
             <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@${user.username}</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
+            <a class="nav-link active" aria-current="page" href="#">@${user.username}</a>
+            <div class="btn btn-outline-primary rounded-pill" onclick="followUser(${user.id})" id=${user.id}>Follow</div>
           </div>
     `;
   });
   followers.innerHTML = html;
 };
+
 // Fetch Logged in User
 const fetchUser = async (token) => {
   try {
@@ -100,7 +149,7 @@ postImage.addEventListener("change", async (event) => {
   imgUpload = event.target.files[0];
   if (imgUpload !== "") {
     // disable the video upload container
-    videUploadContainer.classList.add("disabled");
+    videoUploadContainer.classList.add("disabled");
     // disable the postBtn by adding a class disabled
     postBtn.classList.add("disabled");
     alert("Uploading Image, Please wait a moment");
@@ -180,8 +229,13 @@ const renderPosts = (posts) => {
           @${post.username}</a
         >
       </div>
-      <p class="card-text">
-        ${post.content}
+      <p class="card-text"  >
+      <a class="content-link" href="http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+        post.post_id
+      }">
+      ${post.content}
+
+      </a>
       </p>
     </div>
     <a
@@ -194,16 +248,17 @@ const renderPosts = (posts) => {
       post.video
         ? `<video controls src=${post.video} autoplay class="card-img-top img-custom"></video>`
         : `
+        ${
+          post.image
+            ? `
         <img
         class="card-img-top img-custom"
-        src= ${
-          post.image
-            ? post.image
-            : "https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        }
+        src= ${post.image}
         alt="Card image cap"
       />
-
+        `
+            : ""
+        }
         `
     }
    
@@ -216,8 +271,7 @@ const renderPosts = (posts) => {
       <div class="actions">
         <!-- Button trigger modal -->
         <span
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
+      
           class="material-symbols-outlined modal-trigger"
         >
           comment
@@ -231,45 +285,21 @@ const renderPosts = (posts) => {
     </div>
   </div>
 
-  <!-- Comments Modal -->
+  <form class="d-flex justify-content-center commentForm" role="search">
+    <input
+      class="form-control ms-2 commentInput"
+      type="text"
+      placeholder="Write your comment"
+      aria-label="Search"
+    />
 
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body modal-custom">
-          <form action="" class="updateForm" postId=${post.post_id}>
-            <textarea
-              name=""
-              placeholder="Share your thoughts"
-              id=""
-              cols="30"
-              rows="5"
-              class="form-control"
-            ></textarea>
+    <button class="btn postBtn" type="submit">
+      <span class="material-symbols-outlined send" id=${
+        post.post_id
+      } > send </span>
+    </button>
+  </form>
 
-            <button type="submit" class="btn btn-secondary">
-              Comment
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
     `;
   });
   // add the content as the last child of the main content div
@@ -307,22 +337,24 @@ const commentPost = async (content, user_id, post_id) => {
     alert(error);
   }
 };
-
 // Create a comment for each post
 postsContainer.addEventListener("click", async (e) => {
-  if (e.target.classList.contains("modal-trigger")) {
-    const commentForm = document.querySelector(".updateForm");
-    commentForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const comment = commentForm.querySelector("textarea").value;
-      if (comment.trim() == "") {
-        alert("Comment cannot be empty");
-      } else {
-        const user = await fetchUser(localStorage.getItem("token"));
-        const user_id = user.id;
-        const post_id = commentForm.getAttribute("postId");
-        await commentPost(comment, user_id, post_id);
-      }
-    });
+  if (e.target.classList.contains("send")) {
+    e.preventDefault();
+    const post_id = e.target.getAttribute("id");
+    console.log(post_id);
+    const commentInput =
+      e.target.parentElement.parentElement.querySelector(".commentInput");
+    console.log(commentInput);
+    const content = commentInput.value;
+    const user_id = JSON.parse(localStorage.getItem("user_id"));
+
+    // make sure the input has something before you comment
+    if (content.trim() === "") {
+      return alert("Please write something before you comment");
+    }
+
+    await commentPost(content, user_id, post_id);
+    alert("Comment Added Successfully");
   }
 });

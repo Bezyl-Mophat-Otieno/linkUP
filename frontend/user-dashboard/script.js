@@ -1,3 +1,63 @@
+const pageInitializer = async () => {
+  localStorage.getItem("token")
+    ? null
+    : (window.location.href = "/frontend/login/index.html");
+  await fetchUser(localStorage.getItem("token"));
+  await fetchNotFollowedUsers();
+  await fetchPosts();
+};
+window.onload = async () => {
+  // initializing the contents of the Page
+  await pageInitializer();
+};
+
+// Explore Random Posts
+const explorePosts = async () => {
+  const res = await fetch("http://localhost:5000/api/v1/posts/fetch", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+  let html = "";
+  const posts = data.posts;
+
+  return renderPosts(posts);
+};
+
+const explore = document.querySelector(".explore-menu");
+console.log(explore);
+explore.addEventListener("click", async () => {
+  postsContainer.innerHTML = "";
+  // Fetching the posts
+  await explorePosts();
+});
+
+const explore1 = document.querySelector(".explore-nav");
+console.log(explore);
+explore1.addEventListener("click", async () => {
+  postsContainer.innerHTML = "";
+  // Fetching the posts
+  await explorePosts();
+});
+
+const home = document.querySelector(".home-menu");
+console.log(explore);
+home.addEventListener("click", async () => {
+  postsContainer.innerHTML = "";
+  // Fetching the posts
+  await fetchPosts();
+});
+
+const home1 = document.querySelector(".home-nav");
+console.log(explore);
+home1.addEventListener("click", async () => {
+  postsContainer.innerHTML = "";
+  // Fetching the posts
+  await fetchPosts();
+});
 // Fetch Logged in User
 const fetchUser = async (token) => {
   try {
@@ -19,15 +79,6 @@ const fetchUser = async (token) => {
   } catch (error) {
     console.log(error);
   }
-};
-
-window.onload = async () => {
-  localStorage.getItem("token")
-    ? null
-    : (window.location.href = "/frontend/login/index.html");
-  await fetchUser(localStorage.getItem("token"));
-  await fetchNotFollowedUsers();
-  await fetchPosts();
 };
 
 const postsContainer = document.querySelector(".posts");
@@ -77,6 +128,37 @@ const uploadMedia = async (file, type) => {
     // Handle error appropriately
   }
 };
+
+// Follow a user
+
+const followUser = async (followed) => {
+  const myId = JSON.parse(localStorage.getItem("user_id"));
+  const data = {
+    follower: myId,
+    followed: followed,
+  };
+  const res = await fetch("http://localhost:5000/api/v1/followers/follow", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      accetp: "application/json",
+    },
+  });
+
+  const response = await res.json();
+
+  console.log(response);
+  alert(response.message);
+};
+
+followers.addEventListener("click", async (e) => {
+  if (e.target.classList.contains("btn")) {
+    const followed = e.target.getAttribute("id");
+    followUser(followed);
+    await fetchNotFollowedUsers();
+  }
+});
 
 // Uploading the image to cloudinary
 postImage.addEventListener("change", async (event) => {
@@ -150,20 +232,30 @@ postForm.addEventListener("submit", async (e) => {
   }
 });
 
-const renderPosts = (posts) => {
+const renderPosts = async (posts) => {
+  if (posts.length == 0) {
+    postsContainer.innerHTML = "<h1>No Posts Yet</h1>";
+  }
   let html = "";
-  posts.forEach(async (post) => {
+  for (const post of posts) {
     html += `
     <div class="card card-custom" style="width: 18rem" postId=${post.post_id}>
     <div class="card-body">
       <div class="card-header">
         <span class="material-symbols-outlined"> person </span>
-        <a class="nav-link active" aria-current="page" href="#">
+        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+          post.post_id
+        }">
           @${post.username}</a
         >
       </div>
-      <p class="card-text">
-        ${post.content}
+      <p class="card-text"  >
+      <a class="content-link" href="http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+        post.post_id
+      }">
+      ${post.content}
+
+      </a>
       </p>
     </div>
     <a
@@ -172,38 +264,50 @@ const renderPosts = (posts) => {
         post.post_id
       }"
     >
+    
+    
     ${
       post.video
-        ? ` <video controls src=${post.video} class="card-img-top video-custom"></video>`
+        ? `<video controls src=${post.video} class="card-img-top video"></video>`
         : `
+      ${
+        post.image
+          ? `
         <img
         class="card-img-top img-custom"
-        src= ${
-          post.image
-            ? post.image
-            : "https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        }
+        src= ${post.image}
         alt="Card image cap"
-      />   
+        />
         `
+          : ""
+      }
+      `
     }
+    
     
     </a>
     <div class="card-footer">
       <div class="actions">
-        <span class="material-symbols-outlined"> favorite </span>
-        <a class="nav-link active" aria-current="page" href="#">300</a>
+        <span class="material-symbols-outlined like" id=${
+          post.post_id
+        }> favorite </span>
+        <a class="nav-link active" aria-current="page" href="#">${
+          post.likes
+        }</a>
       </div>
       <div class="actions">
         <!-- Button trigger modal -->
-        <span
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
+        <a href="http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+          post.post_id
+        }"
+      
           class="material-symbols-outlined modal-trigger"
         >
           comment
-        </span>
-        <a class="nav-link active" aria-current="page" href="#">200</a>
+        </a>
+        <a class="nav-link active" aria-current="page" href=""http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+          post.post_id
+        }">${await fetchPostCommentsCount(post.post_id)}</a>
       </div>
       <div class="actions">
         <span class="material-symbols-outlined"> share </span>
@@ -212,68 +316,74 @@ const renderPosts = (posts) => {
     </div>
   </div>
 
-  <!-- Comments Modal -->
+  <form class="d-flex justify-content-center commentForm" role="search">
+    <input
+      class="form-control ms-2 commentInput"
+      type="text"
+      placeholder="Write your comment"
+      aria-label="Search"
+    />
 
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body modal-custom">
-          <form action="" class="updateForm" postId=${post.post_id}>
-            <textarea
-              name=""
-              placeholder="Share your thoughts"
-              id=""
-              cols="30"
-              rows="5"
-              class="form-control"
-            ></textarea>
+    <button class="btn postBtn" type="submit">
+      <span class="material-symbols-outlined send" id=${
+        post.post_id
+      } > send </span>
+    </button>
+  </form>
 
-            <button type="submit" class="btn btn-secondary">
-              Comment
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
     `;
-  });
-  // add the content as the last child of the main content div
+  } // add the content as the last child of the main content div
   postsContainer.innerHTML = html;
+};
+
+const fetchPostCommentsCount = async (postId) => {
+  try {
+    console.log(postId);
+    const res = await fetch(
+      `http://localhost:5000/api/v1/comments/post/${postId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const data = await res.json();
+    return (count =
+      data?.comments?.length == undefined ? 0 : data.comments.length);
+  } catch (error) {
+    alert(error);
+  }
 };
 
 // Fetch Random Posts
 const fetchPosts = async () => {
-  const user_id = JSON.parse(localStorage.getItem("user_id"));
-  const res = await fetch(
-    `http://localhost:5000/api/v1/posts/fetch/followed/${user_id}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  try {
+    const user_id = JSON.parse(localStorage.getItem("user_id"));
+    const res = await fetch(
+      `http://localhost:5000/api/v1/posts/fetch/followed/${user_id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-  const data = await res.json();
-  let html = "";
-  const posts = data.posts;
-  return renderPosts(posts);
+    const data = await res.json();
+    console.log(data);
+    let posts;
+    let html = "";
+    if (data.message === "No posts found") {
+      posts = [];
+      return renderPosts(posts);
+    }
+    posts = data.posts;
+    return renderPosts(posts);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const fetchNotFollowedUsers = async () => {
@@ -287,20 +397,22 @@ const fetchNotFollowedUsers = async () => {
   });
 
   const data = await res.json();
-  const users = data.followers;
-  let html = "";
-  users.forEach((user) => {
-    html += `
+  if (data.message !== "Could not retrieve followers") {
+    const users = data.followers;
+    let html = "";
+    users.forEach((user) => {
+      html += `
       <div class="persons">
             <span class="material-symbols-outlined"> person </span>
             <a class="nav-link active" aria-current="page" href="#"
               >@${user.username}</a
             >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
+            <div class="btn btn-outline-primary rounded-pill" id=${user.id}>Follow</div>
           </div>
     `;
-  });
-  followers.innerHTML = html;
+    });
+    followers.innerHTML = html;
+  }
 };
 
 const commentPost = async (content, user_id, post_id) => {
@@ -321,18 +433,52 @@ const commentPost = async (content, user_id, post_id) => {
 
 // Create a comment for each post
 postsContainer.addEventListener("click", async (e) => {
-  if (e.target.classList.contains("modal-trigger")) {
-    const commentForm = document.querySelector(".updateForm");
-    commentForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const comment = commentForm.querySelector("textarea").value;
-      if (comment.trim() == "") {
-        alert("Comment cannot be empty");
-      } else {
-        const user_id = JSON.parse(localStorage.getItem("user_id"));
-        const post_id = commentForm.getAttribute("postId");
-        await commentPost(comment, user_id, post_id);
-      }
-    });
+  if (e.target.classList.contains("send")) {
+    e.preventDefault();
+    const post_id = e.target.getAttribute("id");
+    console.log(post_id);
+    const commentInput =
+      e.target.parentElement.parentElement.querySelector(".commentInput");
+    console.log(commentInput);
+    const content = commentInput.value;
+    const user_id = JSON.parse(localStorage.getItem("user_id"));
+
+    // make sure the input has something before you comment
+    if (content.trim() === "") {
+      return alert("Please write something before you comment");
+    }
+
+    await commentPost(content, user_id, post_id);
+    alert("Comment Added Successfully");
+  }
+
+  if (e.target.classList.contains("like")) {
+    const post_id = e.target.getAttribute("id");
+    likePost(post_id);
   }
 });
+
+// Like a post
+
+const likePost = async (post_id) => {
+  const user_id = JSON.parse(localStorage.getItem("user_id"));
+
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/posts/like/${post_id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user_id }),
+      }
+    );
+
+    const data = await res.json();
+    alert("Post Liked Successfully");
+    await fetchPosts();
+  } catch (error) {
+    alert(error);
+  }
+};

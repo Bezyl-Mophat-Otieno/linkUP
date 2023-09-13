@@ -22,6 +22,7 @@ const updateUser = async (req: Request, res: Response) => {
         message: "User not found.Therefore not updated",
         status: "failed",
       });
+    console.log(result);
     return res
       .status(200)
       .json({ message: "User updated successfully", status: "success" });

@@ -1,11 +1,8 @@
 CREATE OR ALTER PROCEDURE getFollowers
 @user_id VARCHAR(255)
 AS BEGIN
-    SELECT userTable.username
+    SELECT userTable.username, userTable.id, followerTable.id AS followTableId
     FROM userTable
-    WHERE userTable.id IN (
-        SELECT follower
-        FROM followerTable
-        WHERE followed = @user_id
-    )
-END
+    INNER JOIN followerTable ON userTable.id = followerTable.follower
+    WHERE followerTable.followed = @user_id;
+END;

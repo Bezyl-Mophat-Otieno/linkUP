@@ -55,6 +55,17 @@ login.addEventListener("click", async (e) => {
         window.location.href = "/frontend/user-dashboard/index.html";
       }, 3000);
       localStorage.setItem("token", data.token);
+    } else {
+      alerts.innerHTML = `
+    
+      <div class="alert" >
+     ${data.message}
+      </div>
+      `;
+
+      setTimeout(() => {
+        alerts.innerHTML = "";
+      }, 3000);
     }
   } catch (error) {
     console.log(error);
