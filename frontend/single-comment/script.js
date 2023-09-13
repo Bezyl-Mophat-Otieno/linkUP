@@ -5,7 +5,7 @@ window.onload = async () => {
   const commentId = window.location.search.split("=")[1];
   console.log(commentId);
   await fetchComment(commentId);
-  // await fetchPostComments(postId);
+  await fetchSubComment(commentId);
 };
 const logoutBtn = document.querySelector("#logout");
 
@@ -16,6 +16,7 @@ logoutBtn.addEventListener("click", () => {
 
 const commentContainer = document.querySelector(".commentContainer");
 const likesContainer = document.querySelector(".likes");
+const subComment = document.querySelector(".subCommentContainer");
 
 const fetchComment = async (commentId) => {
   try {
@@ -34,6 +35,8 @@ const fetchComment = async (commentId) => {
     if (data.status == "success") {
       const comment = data.comment;
       console.log(comment);
+      const isMine =
+        comment.user_id == JSON.parse(localStorage.getItem("user_id"));
       html += `
       <div class="comment" }>
       <div class="card card-custom" style="width: 18rem">
@@ -48,17 +51,13 @@ const fetchComment = async (commentId) => {
             ${comment.content}
           </p>
           <div class="card-footer" commentId=${comment.comment_id}>
-            <span class="material-symbols-outlined modal-trigger edit" 
-            data-bs-toggle="modal"
-            data-bs-target="#editModal"> edit </span>
+          
 
             ${
               comment.subComment
                 ? ``
                 : ` 
-            <span class="material-symbols-outlined modal-trigger"
-            data-bs-toggle="modal"
-            data-bs-target="#commentModal"
+            <span class="material-symbols-outlined modal-trigger subComment "
             > comment </span>`
             }
            
@@ -69,62 +68,45 @@ const fetchComment = async (commentId) => {
           </div>
           </div>
           </div>
-          <form class="d-flex justify-content-center commentForm" role="search">
+
+          <div class="hide" id="subcommentForm">
+
+          <form class="d-flex justify-content-center  commentForm"   role="search">
           <input
-            class="form-control ms-2 commentInput"
+            class="form-control ms-2 commentInput "
+            type="text"
+            placeholder="Write Your Subcomment here ..."
+            aria-label="Search"
+          />
+      
+          <button class="btn postBtn" type="submit">
+            <span class="material-symbols-outlined   addSubComment" postId =${
+              comment.post_id
+            } id=${comment.comment_id} > send </span>
+          </button>
+        </form>
+
+        </div>
+
+          ${
+            isMine
+              ? `<form class="d-flex justify-content-center commentForm" role="search">
+          <input
+            class="form-control ms-2 commentInputEdit"
             type="text"
             placeholder="Edit Your Comment "
             aria-label="Search"
           />
       
           <button class="btn postBtn" type="submit">
-            <span class="material-symbols-outlined send" id=${
-              comment.comment_id
-            } > send </span>
+            <span class="material-symbols-outlined send" id=${comment.comment_id} > send </span>
           </button>
-        </form>
+        </form>`
+              : ``
+          }
       </div> 
 
-      <!-- Comments Modal -->
-      <div
-        class="modal fade"
-        id="commentModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body modal-custom">
-              <form action="" class="updateForm" commentId=${
-                comment.comment_id
-              }>
-                <textarea
-                  name=""
-                  placeholder="Share your thoughts"
-                  id=""
-                  cols="30"
-                  rows="5"
-                  class="form-control"
-                ></textarea>
-    
-                <button type="submit" class="btn btn-secondary">
-                  Add Subcomment
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      
  
       <!-- Comments Like -->
 
@@ -165,25 +147,34 @@ const fetchComment = async (commentId) => {
 
 commentContainer.addEventListener("click", async (e) => {
   e.preventDefault();
-  if (e.target.classList.contains("edit")) {
-    const commentId = e.target.parentElement.getAttribute("commentId");
-    console.log(commentId);
-    const updateForm = document.querySelector(".updateForm");
-    const textarea = document.querySelector("textarea");
-    textarea.addEventListener("input", () => {
-      console.log("Hello");
-    });
-  }
   if (e.target.classList.contains("send")) {
-    const commentInput = document.querySelector(".commentInput");
+    const commentInput = document.querySelector(".commentInputEdit");
     const comment_id = e.target.getAttribute("id");
     const content = commentInput.value;
+    console.log(content);
     if (content == "") {
       alert("Please enter a comment");
       return;
     }
     await updateComment(comment_id, { content });
     await fetchComment(comment_id);
+  }
+
+  if (e.target.classList.contains("subComment")) {
+    const subComment = document.querySelector("#subcommentForm");
+    subComment.classList.remove("hide");
+  }
+  if (e.target.classList.contains("addSubComment")) {
+    const comment_id = e.target.getAttribute("id");
+    const post_id = e.target.getAttribute("postId");
+    const content = document.querySelector(".commentInput").value;
+    if (content == "") {
+      alert("Please enter a comment");
+      return;
+    }
+    await addSubComment(comment_id, post_id, content);
+    // await fetchComment(comment_id);
+    alert("Subcomment added successfully");
   }
 });
 
@@ -242,7 +233,6 @@ const fetchCommentLikers = async (postId) => {
               ${comment.content}
             </p>
             <div class="card-footer">
-              <span class="material-symbols-outlined"> edit </span>
               <span class="material-symbols-outlined"> favorite </span>
               ${
                 loggedInUserId == comment.user_id
@@ -261,4 +251,58 @@ const fetchCommentLikers = async (postId) => {
   } catch (error) {
     alert(error);
   }
+};
+
+const fetchSubComment = async (comment_id) => {
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/comments/subcomment/${comment_id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const data = await res.json();
+    if (data.status === "success") {
+      const comment = data.comment;
+      const loggedInUserId = JSON.parse(localStorage.getItem("user_id"));
+      console.log(loggedInUserId == comment.user_id);
+      subComment.innerHTML = `
+      <div class="comment">
+      <div class="card card-custom" style="width: 18rem">
+        <div class="card-body">
+          <div class="card-header">
+            <span class="material-symbols-outlined"> person </span>
+            <a class="nav-link active" aria-current="page" href="#"
+              >@${comment.username}</a
+            >
+          </div>
+          <p class="card-text">
+            ${comment.content}
+          </p>
+
+        </div>
+      </div>
+      </div> 
+      `;
+    }
+  } catch (error) {
+    alert(error);
+  }
+};
+
+const addSubComment = async (comment, post_id, content) => {
+  const user_id = JSON.parse(localStorage.getItem("user_id"));
+  const res = await fetch("http://localhost:5000/api/v1/comments/subcomment/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ user_id, post_id, comment, content }),
+  });
+  const data = await res.json();
+  console.log(data);
 };

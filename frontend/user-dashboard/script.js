@@ -476,7 +476,7 @@ const likePost = async (post_id) => {
     );
 
     const data = await res.json();
-    alert("Post Liked Successfully");
+    // alert("Post Liked Successfully");
     await fetchPosts();
   } catch (error) {
     alert(error);

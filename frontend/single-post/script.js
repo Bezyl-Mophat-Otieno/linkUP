@@ -65,7 +65,7 @@ const fetchPost = async (postId) => {
               post.image
                 ? `
             <img
-            class="card-img-top img-custom"
+            class="card-img-top video"
             src= ${post.image}
             alt="Card image cap"
           />

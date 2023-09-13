@@ -122,6 +122,15 @@
   border: 1px solid #6e767d;
   border-radius: 20px;
   height: 20vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: white;
 }
 
 .commentForm {
@@ -130,6 +139,10 @@
   align-items: center;
   gap: 1vh;
   margin-top: 3vh;
+}
+
+.hide {
+  display: none;
 }
 
 .material-symbols-outlined {

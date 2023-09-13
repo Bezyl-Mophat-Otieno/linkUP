@@ -17,6 +17,8 @@ window.onload = async () => {
 
 const pageInitializer = async () => {
   await fetchUser(localStorage.getItem("token"));
+  await fetchFollowers();
+  await fetchFollowing();
 };
 
 followers.addEventListener("click", () => {});
@@ -171,3 +173,58 @@ const updateUser = async (event) => {
 };
 
 updateForm.addEventListener("submit", updateUser);
+
+window.onload = async () => {
+  localStorage.getItem("token")
+    ? null
+    : (window.location.href = "/frontend/login/index.html");
+  await pageInitializer();
+};
+const followersCount = document.querySelector(".followers .count");
+const followingCount = document.querySelector(".following .count");
+console.log(followers);
+
+// These are the people that follow me
+
+const fetchFollowers = async () => {
+  const user_id = JSON.parse(localStorage.getItem("user_id"));
+
+  const res = await fetch(
+    `http://localhost:5000/api/v1/followers/following/${user_id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = await res.json();
+  const users = data.followers;
+
+  followersCount.innerHTML = users === undefined ? 0 : users.length;
+};
+// This are the people I am following
+const fetchFollowing = async () => {
+  const user_id = JSON.parse(localStorage.getItem("user_id"));
+
+  const res = await fetch(
+    `http://localhost:5000/api/v1/followers/followed/${user_id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = await res.json();
+  const users = data.followers;
+  followingCount.innerHTML = users === undefined ? 0 : users.length;
+};
+
+following.addEventListener("click", async (e) => {
+  if (e.target.classList.contains("btn")) {
+    const id = e.target.getAttribute("id");
+    await unfollow(id);
+    alert("You have unfollowed this user");
+  }
+});

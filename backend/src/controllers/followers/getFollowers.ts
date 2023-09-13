@@ -8,7 +8,6 @@ const getFollowers = async (req: Request, res: Response) => {
   }
   try {
     const result = await DB.executeProcedure("getFollowers", { user_id: id });
-    console.log(result);
     if (result.recordset.length > 0) {
       console.log(result.recordset);
       return res.status(200).json({
@@ -18,6 +17,7 @@ const getFollowers = async (req: Request, res: Response) => {
     }
     return res.status(404).json({ message: "Could not retrieve followers" });
   } catch (error: any) {
+    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };
