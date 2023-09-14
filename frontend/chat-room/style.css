@@ -2,10 +2,10 @@
   margin: 0;
   padding: 0;
   font-size: 1.1rem;
+  background-color: #15181c !important;
 }
 
 .body {
-  background-color: #15181c;
   font-family: "Montserrat", sans-serif;
   display: flex;
   flex-direction: column;
@@ -134,6 +134,75 @@
   display: none;
 }
 
+/* Styles for the alert box container */
+.container {
+  position: relative;
+}
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30vw;
+}
+.chat-header > h1 {
+  color: white;
+  font-size: 2rem;
+}
+
+/* Styles for the alert box */
+.alert-box {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #15181c;
+  color: black;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(221, 219, 219, 0.5);
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
+.message {
+  color: #37423d;
+}
+/* Styles for the close button */
+.close-btn {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
 .chat-area {
   display: flex;
   flex-direction: column;
@@ -146,6 +215,21 @@
   border: 1px solid #6e767d;
   padding: 15px;
 }
+.comm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 50vw;
+  border: 1px solid #6e767d;
+  padding: 15px;
+}
+.input {
+  color: white !important;
+}
 
 .chat-area form input {
   margin-top: 4vh;
@@ -156,7 +240,7 @@
   border-radius: 10px;
   padding: 10px;
   background-color: #e0e1dd;
-  color: black;
+  color: white;
   font-size: 1.2rem;
   outline: none;
   border: 1px solid #6e767d;

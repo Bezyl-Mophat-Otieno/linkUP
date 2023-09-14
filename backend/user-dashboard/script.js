@@ -13,7 +13,8 @@ window.onload = async () => {
   const token = localStorage.getItem("token");
   console.log(typeof token);
   if (token == null || token == "") {
-    window.location.href = "http://127.0.0.1:5500/frontend/login/index.html";
+    window.location.href =
+      "http://127.0.0.1:5500/frontend/authentication-page/login/index.html";
   }
 };
 
@@ -48,7 +49,9 @@ const productContainer = document.querySelector(".my-shop-products");
 
 const fetchProducts = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/v1/products");
+    const res = await fetch(
+      "https://shopieapi.azurewebsites.net/api/v1/products"
+    );
     const object = await res.json();
     console.log(object);
 
@@ -94,7 +97,7 @@ productContainer.addEventListener("click", async (e) => {
   if (e.target.classList.contains("action-btn")) {
     const productId = e.target.parentElement.id;
     const res = await fetch(
-      `http://localhost:5000/api/v1/products/${productId}`
+      `https://shopieapi.azurewebsites.net/api/v1/products/${productId}`
     );
     const object = await res.json();
     console.log(object);

@@ -74,6 +74,8 @@ const fetchUser = async (token) => {
 
     const data = await res.json();
     const user = data.user;
+    localStorage.setItem(`${user.username}`, JSON.stringify(user.username));
+    localStorage.setItem("username,", JSON.stringify(user.username));
     localStorage.setItem("user_id", JSON.stringify(user.id));
     return user;
   } catch (error) {
