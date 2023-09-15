@@ -38,7 +38,8 @@ describe("Add Post", () => {
     await addPost(mockedReq, mockedRes);
     expect(mockedRes.status).toHaveBeenCalledWith(400);
     expect(mockedRes.json).toHaveBeenCalledWith({
-      message: "Either the image field or the content field must be filled",
+      message:
+        "Either the image field , video field or the content field must be filled",
     });
   });
 

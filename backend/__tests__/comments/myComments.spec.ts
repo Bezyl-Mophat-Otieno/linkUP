@@ -24,6 +24,9 @@ describe(" Add Comment", () => {
         user_id: "test_id",
         post_id: "test_id",
       },
+      params: {
+        id: "test_id",
+      },
     } as unknown as Request;
 
     const mockRes = {
@@ -35,8 +38,8 @@ describe(" Add Comment", () => {
       rowsAffected: [0],
     });
 
-    await addComment(mockReq, mockRes);
-    expect(mockRes.status).toHaveBeenCalledWith(400);
+    await myComments(mockReq, mockRes);
+    expect(mockRes.status).toHaveBeenCalledWith(404);
   });
 
   it("it should add the comment successfully", async () => {
@@ -45,6 +48,9 @@ describe(" Add Comment", () => {
         content: "test_content",
         user_id: "test_id",
         post_id: "test_id",
+      },
+      params: {
+        id: "test_id",
       },
     } as unknown as Request;
 
@@ -57,7 +63,7 @@ describe(" Add Comment", () => {
       rowsAffected: [1],
     });
 
-    await addComment(mockReq, mockRes);
+    await myComments(mockReq, mockRes);
     expect(mockRes.status).toHaveBeenCalledWith(200);
   });
 });
