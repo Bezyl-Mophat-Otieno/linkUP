@@ -1,7 +1,6 @@
 import { Response, Request } from "express";
-import myComments from "../../src/controllers/comments/myComments.ts";
 import DB from "../../src/database/dbHelper.ts";
-
+import updateComment from "../../src/controllers/comments/updateComment.ts";
 jest.mock("../../src/database/dbHelper.ts");
 describe("My comments", () => {
   it("it should error out if the id is not provided", async () => {
@@ -13,7 +12,22 @@ describe("My comments", () => {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
     } as unknown as Response;
-    await myComments(mockedReq, mockedRes);
+    await updateComment(mockedReq, mockedRes);
+    expect(mockedRes.status).toHaveBeenCalledWith(400);
+  });
+  it("it should error out if the content is not provided", async () => {
+    const mockedReq = {
+      params: {
+        id: "test_id",
+      },
+      body: {},
+    } as unknown as Request;
+
+    const mockedRes = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    } as unknown as Response;
+    await updateComment(mockedReq, mockedRes);
     expect(mockedRes.status).toHaveBeenCalledWith(400);
   });
 
@@ -21,6 +35,9 @@ describe("My comments", () => {
     const mockedReq = {
       params: {
         id: "test_id",
+      },
+      body: {
+        content: "test_content",
       },
     } as unknown as Request;
 
@@ -32,14 +49,17 @@ describe("My comments", () => {
     (DB.executeProcedure as jest.Mock).mockResolvedValueOnce({
       recordset: [],
     });
-    await myComments(mockedReq, mockedRes);
+    await updateComment(mockedReq, mockedRes);
 
     expect(mockedRes.status).toHaveBeenCalledWith(404);
   });
-  it("it should display an alert if comments are found", async () => {
+  it("it should update a comment successfully", async () => {
     const mockedReq = {
       params: {
         id: "test_id",
+      },
+      body: {
+        content: "test_content",
       },
     } as unknown as Request;
 
@@ -49,10 +69,10 @@ describe("My comments", () => {
     } as unknown as Response;
 
     (DB.executeProcedure as jest.Mock).mockResolvedValueOnce({
-      recordset: [{ id: "test_id" }],
+      rowsAffected: [1],
     });
+    await updateComment(mockedReq, mockedRes);
 
-    await myComments(mockedReq, mockedRes);
     expect(mockedRes.status).toHaveBeenCalledWith(200);
   });
 });

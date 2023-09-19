@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
-import myComments from "../../src/controllers/comments/myComments.ts";
 import DB from "../../src/database/dbHelper.ts";
+import postComments from "../../src/controllers/comments/postComments.ts";
 
 jest.mock("../../src/database/dbHelper.ts");
 describe("My comments", () => {
@@ -13,7 +13,7 @@ describe("My comments", () => {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
     } as unknown as Response;
-    await myComments(mockedReq, mockedRes);
+    await postComments(mockedReq, mockedRes);
     expect(mockedRes.status).toHaveBeenCalledWith(400);
   });
 
@@ -32,7 +32,7 @@ describe("My comments", () => {
     (DB.executeProcedure as jest.Mock).mockResolvedValueOnce({
       recordset: [],
     });
-    await myComments(mockedReq, mockedRes);
+    await postComments(mockedReq, mockedRes);
 
     expect(mockedRes.status).toHaveBeenCalledWith(404);
   });
@@ -52,7 +52,7 @@ describe("My comments", () => {
       recordset: [{ id: "test_id" }],
     });
 
-    await myComments(mockedReq, mockedRes);
+    await postComments(mockedReq, mockedRes);
     expect(mockedRes.status).toHaveBeenCalledWith(200);
   });
 });
