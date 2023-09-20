@@ -50,6 +50,12 @@
               </button>
             </li>
             <li class="nav-item">
+              <span class="material-symbols-outlined"> post </span>
+              <button class="nav-link active posts-nav" aria-current="page">
+                My Posts
+              </button>
+            </li>
+            <li class="nav-item">
               <span class="material-symbols-outlined"> person_search </span>
               <button class="nav-link active explore-nav" aria-current="page">
                 Explore
@@ -87,16 +93,7 @@
                 What are you selling ?
               </a>
             </li>
-            <li class="nav-item">
-              <span class="material-symbols-outlined"> add </span>
-              <a
-                class="nav-link active btn btn-primary"
-                aria-current="page"
-                href="http://127.0.0.1:5500/frontend/add-product/index.html"
-              >
-                Create a Post.
-              </a>
-            </li>
+            >
             <li class="nav-item">
               <span class="material-symbols-outlined"> logout </span>
               <a
@@ -110,12 +107,12 @@
           </ul>
           <form class="d-flex" role="search">
             <input
-              class="form-control me-2"
+              class="form-control me-2 searchInput"
               type="search"
-              placeholder="Search Story"
+              placeholder="Search Anything here ..."
               aria-label="Search"
             />
-            <button class="btn btn-outline-primary" type="submit">
+            <button class="btn btn-outline-primary searchBtn" type="submit">
               Search
             </button>
           </form>
@@ -139,6 +136,13 @@
           <span class="material-symbols-outlined"> home_pin </span>
           <button class="nav-link active home-menu">Home</button>
         </div>
+
+        <div class="menuItem">
+          <span class="material-symbols-outlined"> post </span>
+          <button class="nav-link active posts-menu" aria-current="page">
+            My Posts
+          </button>
+        </div>
         <div class="menuItem">
           <span class="material-symbols-outlined"> travel_explore </span>
           <button class="nav-link active explore-menu" aria-current="page">
@@ -156,6 +160,7 @@
         <div class="menuItem">
           <span class="material-symbols-outlined"> storefront </span>
           <a
+            id="market"
             class="navbar-brand"
             href="http://127.0.0.1:5500/frontend/market-place/index.html"
             >Market Place</a
@@ -164,7 +169,7 @@
         <div class="menuItem">
           <span class="material-symbols-outlined"> manage_accounts </span>
           <a
-            class="navbar-brand"
+            class="navbar-brand profile"
             href="http://127.0.0.1:5500/frontend/profile/index.html#"
             >Profile</a
           >
@@ -175,21 +180,13 @@
             local_convenience_store
           </span>
           <a
-            class="nav-link active btn btn-outline-secondary"
+            class="nav-link active btn btn-outline-secondary add-product"
             aria-current="page"
             href="http://127.0.0.1:5500/frontend/add-product/index.html"
             >What are you selling ?</a
           >
         </div>
-        <div class="menuItem">
-          <span class="material-symbols-outlined"> add </span>
-          <a
-            class="nav-link active btn btn-outline-secondary"
-            aria-current="page"
-            href="http://127.0.0.1:5500/frontend/add-product/index.html"
-            >Create a Post</a
-          >
-        </div>
+
         <div class="menuItem">
           <span class="material-symbols-outlined"> logout </span>
           <a
@@ -200,7 +197,13 @@
           >
         </div>
       </div>
+
       <div class="mainContent">
+        <div class="alertContainer">
+          <div class="alert-box" id="alertBox">
+            <span class="message" id="alertMessage"></span>
+          </div>
+        </div>
         <form class="d-flex justify-content-center postForm" role="search">
           <input
             class="form-control ms-2 postInput"
@@ -246,14 +249,17 @@
       </div>
 
       <div class="rightNav">
-        <form class="d-flex" role="search">
+        <form class="d-flex form" role="search">
           <input
-            class="form-control me-2"
+            class="form-control me-2 searchInput-main"
             type="search"
             placeholder="Search Anything Here ..."
             aria-label="Search"
           />
-          <button class="btn btn-outline-secondary" type="submit">
+          <button
+            class="btn btn-outline-secondary searchBtn-main"
+            type="submit"
+          >
             <span class="material-symbols-outlined"> search </span>
           </button>
         </form>

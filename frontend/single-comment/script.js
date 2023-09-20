@@ -4,10 +4,30 @@ window.onload = async () => {
     : (window.location.href = "/frontend/login/index.html");
   const commentId = window.location.search.split("=")[1];
   console.log(commentId);
-  await fetchComment(commentId);
   await fetchSubComment(commentId);
+  await fetchComment(commentId);
 };
+let subCommentStatus = false;
 const logoutBtn = document.querySelector("#logout");
+
+const alertBox = document.getElementById("alertBox");
+const alertMessage = document.getElementById("alertMessage");
+
+// Function to show the alert box
+const showAlert = (message) => {
+  alertBox.style.display = "block";
+  alertMessage.innerHTML = `${message}`;
+};
+
+// Function to hide the alert box
+const hideAlert = () => {
+  alertBox.style.display = "none";
+};
+
+// close the button on clicking anyware in the window
+window.addEventListener("click", (e) => {
+  hideAlert();
+});
 
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("token");
@@ -34,7 +54,7 @@ const fetchComment = async (commentId) => {
     let html = "";
     if (data.status == "success") {
       const comment = data.comment;
-      console.log(comment);
+      console.log(subCommentStatus);
       const isMine =
         comment.user_id == JSON.parse(localStorage.getItem("user_id"));
       html += `
@@ -52,14 +72,12 @@ const fetchComment = async (commentId) => {
           </p>
           <div class="card-footer" commentId=${comment.comment_id}>
           
-
             ${
-              comment.subComment
+              subCommentStatus
                 ? ``
-                : ` 
-            <span class="material-symbols-outlined modal-trigger subComment "
-            > comment </span>`
+                : `<span class="material-symbols-outlined subComment"> comment </span>`
             }
+           
            
             <span class="material-symbols-outlined modal-trigger"
             data-bs-toggle="modal"
@@ -153,7 +171,7 @@ commentContainer.addEventListener("click", async (e) => {
     const content = commentInput.value;
     console.log(content);
     if (content == "") {
-      alert("Please enter a comment");
+      showAlert("Please enter a comment");
       return;
     }
     await updateComment(comment_id, { content });
@@ -169,12 +187,12 @@ commentContainer.addEventListener("click", async (e) => {
     const post_id = e.target.getAttribute("postId");
     const content = document.querySelector(".commentInput").value;
     if (content == "") {
-      alert("Please enter a comment");
+      showAlert("Please enter a comment");
       return;
     }
     await addSubComment(comment_id, post_id, content);
     // await fetchComment(comment_id);
-    alert("Subcomment added successfully");
+    showAlert("Subcomment added successfully");
   }
 });
 
@@ -192,9 +210,9 @@ const updateComment = async (commentId, content) => {
     );
     const data = await res.json();
     console.log(data);
-    alert("comment Updated successfully");
+    showAlert("comment Updated successfully");
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -249,7 +267,7 @@ const fetchCommentLikers = async (postId) => {
       likesContainer.innerHTML = html;
     }
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -267,6 +285,7 @@ const fetchSubComment = async (comment_id) => {
 
     const data = await res.json();
     if (data.status === "success") {
+      subCommentStatus = true;
       const comment = data.comment;
       const loggedInUserId = JSON.parse(localStorage.getItem("user_id"));
       console.log(loggedInUserId == comment.user_id);
@@ -290,7 +309,7 @@ const fetchSubComment = async (comment_id) => {
       `;
     }
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -304,5 +323,5 @@ const addSubComment = async (comment, post_id, content) => {
     body: JSON.stringify({ user_id, post_id, comment, content }),
   });
   const data = await res.json();
-  console.log(data);
+  window.location.reload();
 };

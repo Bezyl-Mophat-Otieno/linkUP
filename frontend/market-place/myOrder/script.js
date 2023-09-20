@@ -6,7 +6,7 @@ window.onload = async () => {
   if (token == null || token == "") {
     window.location.href = "http://127.0.0.1:5500/frontend/login/index.html";
   }
-  profile.innerHTML = localStorage.getItem("loggedUser");
+  profile.innerHTML = localStorage.getItem("username");
 };
 
 const id = localStorage.getItem("user_id");
@@ -14,7 +14,7 @@ console.log(id);
 const customerDetails = document.querySelector(".customerDetails");
 const productContainer = document.querySelector(".productContainer");
 const orders = document.querySelector(".orders");
-const profile = document.querySelector(".profile");
+const profile = document.querySelector(".customerDetails");
 const logout = document.querySelector(".logout");
 
 logout.addEventListener("click", () => {
@@ -24,9 +24,7 @@ logout.addEventListener("click", () => {
 
 const fetchUser = async () => {
   try {
-    const res = await fetch(
-      `https://shopieapi.azurewebsites.net/api/v1/users/one/${id}`
-    );
+    const res = await fetch(`http://localhost:5000/api/v1/users/get/${id}`);
     const data = await res.json();
     console.log(data);
     customerDetails.innerHTML = `  
@@ -43,7 +41,7 @@ const fetchUser = async () => {
 const fetchOrder = async () => {
   try {
     const res = await fetch(
-      `https://shopieapi.azurewebsites.net/api/v1/orders/${id}`
+      `http://localhost:5000/api/v1/products/order/${id}`
     );
     const data = await res.json();
     console.log(data);

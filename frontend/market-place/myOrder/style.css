@@ -11,6 +11,24 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #15181c;
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  border-radius: 10.264px;
+  border: 0.513px solid black;
+  background: #6e767d;
+  width: 40vw;
+  font-size: 18px;
+  padding: 10px 20px;
+  height: 8vh;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .nav {
@@ -122,15 +140,17 @@ body {
 
 /* Style the table header */
 .order-table th {
-  background-color: #f2f2f2;
+  background-color: #15181c;
   text-align: left;
   padding: 10px;
+  color: #6e767d;
 }
 
 /* Style the table data cells */
 .order-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
+  border: 1px solid #6e767d;
+  padding: 20px;
+  color: #6e767d;
 }
 
 .orderDetails {

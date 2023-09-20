@@ -13,6 +13,25 @@ const pageInitializer = async () => {
   await fetchFollowing();
 };
 
+const alertBox = document.getElementById("alertBox");
+const alertMessage = document.getElementById("alertMessage");
+
+// Function to show the alert box
+const showAlert = (message) => {
+  alertBox.style.display = "block";
+  alertMessage.innerHTML = `${message}`;
+};
+
+// Function to hide the alert box
+const hideAlert = () => {
+  alertBox.style.display = "none";
+};
+
+// close the button on clicking anyware in the window
+window.addEventListener("click", (e) => {
+  hideAlert();
+});
+
 // These are the people that follow me
 
 const fetchFollowers = async () => {
@@ -99,6 +118,6 @@ following.addEventListener("click", async (e) => {
   if (e.target.classList.contains("btn")) {
     const id = e.target.getAttribute("id");
     await unfollow(id);
-    alert("You have unfollowed this user");
+    showAlert("You have unfollowed this user");
   }
 });

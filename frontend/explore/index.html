@@ -94,16 +94,7 @@
                 What are you selling ?
               </a>
             </li>
-            <li class="nav-item">
-              <span class="material-symbols-outlined"> add </span>
-              <a
-                class="nav-link active btn btn-primary"
-                aria-current="page"
-                href="http://127.0.0.1:5500/frontend/add-product/index.html"
-              >
-                Create a Post.
-              </a>
-            </li>
+
             <li class="nav-item">
               <span class="material-symbols-outlined"> logout </span>
               <a
@@ -191,15 +182,7 @@
             >What are you selling ?</a
           >
         </div>
-        <div class="menuItem">
-          <span class="material-symbols-outlined"> add </span>
-          <a
-            class="nav-link active btn btn-outline-secondary"
-            aria-current="page"
-            href="http://127.0.0.1:5500/frontend/add-product/index.html"
-            >Create a Post</a
-          >
-        </div>
+
         <div class="menuItem">
           <span class="material-symbols-outlined"> logout </span>
           <a
@@ -211,6 +194,11 @@
         </div>
       </div>
       <div class="mainContent">
+        <div class="container">
+          <div class="alert-box" id="alertBox">
+            <span class="message" id="alertMessage"></span>
+          </div>
+        </div>
         <form class="d-flex justify-content-center postForm" role="search">
           <input
             class="form-control ms-2 postInput"

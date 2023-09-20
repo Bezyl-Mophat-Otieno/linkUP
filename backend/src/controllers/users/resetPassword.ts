@@ -17,7 +17,7 @@ const resetPassword = async (req: Request, res: Response) => {
     if (result.recordset.length === 0) {
       return res
         .status(StatusCodes.BAD_REQUEST)
-        .json({ message: "User does not exist" });
+        .json({ message: "User does not exist", status: "failed" });
     } else {
       const messageOptions = {
         from: process.env.EMAIL as string,

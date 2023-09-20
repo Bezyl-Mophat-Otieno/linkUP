@@ -1,8 +1,27 @@
+const alertBox = document.getElementById("alertBox");
+const alertMessage = document.getElementById("alertMessage");
+
+// Function to show the alert box
+const showAlert = (message) => {
+  alertBox.style.display = "block";
+  alertMessage.innerHTML = `${message}`;
+};
+
+// Function to hide the alert box
+const hideAlert = () => {
+  alertBox.style.display = "none";
+};
+
+let postId = "";
+// close the button on clicking anyware in the window
+window.addEventListener("click", (e) => {
+  hideAlert();
+});
 window.onload = async () => {
   localStorage.getItem("token")
     ? null
     : (window.location.href = "/frontend/login/index.html");
-  const postId = window.location.search.split("=")[1];
+  postId = window.location.search.split("=")[1];
   await fetchPost(postId);
   let comments = await fetchPostComments(postId);
   comments = comments === undefined ? [] : comments;
@@ -65,7 +84,7 @@ const fetchPost = async (postId) => {
               post.image
                 ? `
             <img
-            class="card-img-top video"
+            class="card-img-top img-custom"
             src= ${post.image}
             alt="Card image cap"
           />
@@ -88,7 +107,7 @@ const fetchPost = async (postId) => {
           <div class="actions">
             <!-- Button trigger modal -->
             <span
-            class=" material-symbols-outlined comment" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
+            class=" material-symbols-outlined commentBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasComments" aria-controls="offcanvasRight"
             >
               comment
             </span>
@@ -96,17 +115,14 @@ const fetchPost = async (postId) => {
               post.post_id
             )}</a>
           </div>
-          <div class="actions">
-            <span class="material-symbols-outlined"> share </span>
-            <a class="nav-link active" aria-current="page" href="#"></a>
-          </div>
+
         </div>
       </div>
         `;
     }
     postContainer.innerHTML = html;
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -123,8 +139,11 @@ const deleteComment = async (commentId) => {
     );
 
     const data = await res.json();
-    alert("Comment deleted successfully");
-    window.location.reload();
+    await fetchPostComments(postId);
+    showAlert("Comment deleted successfully");
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   } catch (error) {
     console.log(error);
   }
@@ -142,13 +161,14 @@ const fetchPostLikers = async (postId) => {
       }
     );
     const data = await res.json();
+    console.log(data);
     if (data.status == "success") {
       return data.likers;
     } else {
-      alert("No likes found");
+      showAlert("No likes found");
     }
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -172,9 +192,9 @@ const fetchPostComments = async (postId) => {
       return comments;
     }
 
-    alert("No comments Found");
+    showAlert("No comments Found");
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -203,7 +223,7 @@ const fetchCommentsCount = async (postId) => {
     return (count =
       data?.comments?.length == undefined ? 0 : data.comments.length);
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -257,7 +277,7 @@ const renderCanvas = (list, type) => {
       <div class="card-body">
         <div class="card-header">
           <span class="material-symbols-outlined"> person </span>
-          <a class="nav-link active" aria-current="page" href=http://127.0.0.1:5500/frontend/single-comment/index.html?id=${like.id}
+          <a class="nav-link active " aria-current="page" href=http://127.0.0.1:5500/frontend/single-comment/index.html?id=${like.id}
             >@${like.username}</a
           >
         </div>
@@ -289,10 +309,12 @@ const likeComment = async (comment_id) => {
 
     const data = await res.json();
     console.log(data);
-    alert("Comment Liked Successfully");
-    window.location.reload();
+    showAlert("Comment Liked Successfully");
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 

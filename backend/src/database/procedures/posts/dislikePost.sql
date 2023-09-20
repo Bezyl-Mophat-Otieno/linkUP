@@ -11,4 +11,5 @@ AS BEGIN
     WHEN likes > 0 THEN likes - 1 ELSE 0
     END 
     WHERE post_id = @post_id;
+    UPDATE postTable SET likeState = 0 WHERE post_id = @post_id;
 END;

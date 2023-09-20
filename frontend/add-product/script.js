@@ -50,6 +50,7 @@ productImage.addEventListener("change", async (event) => {
 
       const data = await response.json();
       imageUrl = await data.url;
+      console.log(imageUrl);
     } catch (error) {
       // Handle error appropriately
     }
@@ -199,7 +200,7 @@ addBtn.addEventListener("click", async (e) => {
 const fetchProducts = async () => {
   let html = "";
   try {
-    const res = await fetch("http://localhost:5000/api/v1/products");
+    const res = await fetch("http://localhost:5000/api/v1/products/fetch");
     const object = await res.json();
     console.log(object);
 
@@ -218,7 +219,6 @@ const fetchProducts = async () => {
         </div>
         <div class="details">
           <div class="price">KSH. ${product.price}/=</div>
-          <div class="quntity">${product.quantity} <small> pieces</small></div>
         </div>
         <div class="actions">
           <button class="action-btn-update">Update</button>
@@ -243,13 +243,16 @@ productContainer.addEventListener("click", async (e) => {
     const id = e.target.parentElement.parentElement.id;
     console.log(id);
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/products/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      });
+      const res = await fetch(
+        `http://localhost:5000/api/v1/products/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
       const data = await res.json();
       console.log(data);
       if (data.status === "success") {
@@ -283,13 +286,16 @@ productContainer.addEventListener("click", async (e) => {
     const id = e.target.parentElement.parentElement.id;
     productContainer.setAttribute("id", id);
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/products/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      });
+      const res = await fetch(
+        `http://localhost:5000/api/v1/products/get/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
       const object = await res.json();
       console.log(object);
       const product = object.product;

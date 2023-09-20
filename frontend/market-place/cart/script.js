@@ -46,7 +46,7 @@ const paypalCheckOut = async (total) => {
       async createOrder() {
         try {
           const response = await fetch(
-            "http://localhost:5000/api/v1/orders/create-paypal-order",
+            "http://localhost:5000/api/v1/products/create-paypal-order",
             {
               method: "POST",
               headers: {
@@ -73,7 +73,7 @@ const paypalCheckOut = async (total) => {
       async onApprove(data) {
         try {
           const response = await fetch(
-            "http://localhost:5000/api/v1/orders/capture-paypal-order",
+            "http://localhost:5000/api/v1/products/capture-paypal-order",
             {
               method: "POST",
               headers: {
@@ -173,7 +173,7 @@ const productCheckOut = async (products) => {
         total: product.price * product.quantity,
       };
       const res = await fetch(
-        "https://shopieapi.azurewebsites.net/api/v1/orders",
+        "http://localhost:5000/api/v1/products/create/order",
         {
           method: "POST",
           headers: {
@@ -188,7 +188,7 @@ const productCheckOut = async (products) => {
       const fetchProduct = async (productId) => {
         let html = "";
         const res = await fetch(
-          `https://shopieapi.azurewebsites.net/api/v1/products/${productId}`
+          `http://localhost:5000/api/v1/products/get/${productId}`
         );
         const object = await res.json();
         console.log(object);
@@ -200,7 +200,7 @@ const productCheckOut = async (products) => {
       const myStock = await fetchProduct(product.id);
 
       const res2 = await fetch(
-        `https://shopieapi.azurewebsites.net/api/v1/products/update/${product.id}`,
+        `http://localhost:5000/api/v1/products/update//${product.id}`,
         {
           method: "PUT",
           headers: {

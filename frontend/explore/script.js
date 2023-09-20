@@ -24,6 +24,25 @@ const postBtn = document.querySelector(".postBtn");
 const imgUploadContainer = document.querySelector(".img-upload");
 const postInput = document.querySelector(".postInput");
 
+const alertBox = document.getElementById("alertBox");
+const alertMessage = document.getElementById("alertMessage");
+
+// Function to show the alert box
+const showAlert = (username, message) => {
+  alertBox.style.display = "block";
+  alertMessage.innerHTML = `${username} ${message}`;
+};
+
+// Function to hide the alert box
+const hideAlert = () => {
+  alertBox.style.display = "none";
+};
+
+// close the button on clicking anyware in the window
+window.addEventListener("click", (e) => {
+  hideAlert();
+});
+
 let imgUrl = "";
 let videoUrl = "";
 
@@ -278,10 +297,7 @@ const renderPosts = (posts) => {
         </span>
         <a class="nav-link active" aria-current="page" href="#">200</a>
       </div>
-      <div class="actions">
-        <span class="material-symbols-outlined"> share </span>
-        <a class="nav-link active" aria-current="page" href="#"></a>
-      </div>
+
     </div>
   </div>
 

@@ -13,6 +13,23 @@ body {
   align-items: center;
 }
 
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  border-radius: 10.264px;
+  border: 0.513px solid black;
+  background: #6e767d;
+  width: 40vw;
+  font-size: 18px;
+  padding: 10px 20px;
+  height: 8vh;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
 .nav {
   width: 100vw;
   height: 10vh;
@@ -201,4 +218,20 @@ body {
 .action-btn:hover {
   background-color: white;
   color: #040403;
+}
+
+.brand-name {
+  font-size: 50px;
+}
+
+.brand-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1vh;
+}
+.brand-container > a {
+  text-decoration: none;
+  color: #6e767d;
+  font-size: 25px;
 }

@@ -1,3 +1,26 @@
+const searchForm = document.querySelector(".form");
+const searchInput = document.querySelector(".searchInput");
+
+const alertBox = document.getElementById("alertBox");
+const alertMessage = document.getElementById("alertMessage");
+
+// Function to show the alert box
+const showAlert = (message) => {
+  alertBox.style.display = "block";
+  alertMessage.innerHTML = `${message}`;
+};
+
+// Function to hide the alert box
+const hideAlert = () => {
+  alertBox.style.display = "none";
+};
+
+// close the button on clicking anyware in the window
+window.addEventListener("click", (e) => {
+  hideAlert();
+});
+let displayedPosts = [];
+let suggested = [];
 const pageInitializer = async () => {
   localStorage.getItem("token")
     ? null
@@ -11,6 +34,21 @@ window.onload = async () => {
   await pageInitializer();
 };
 
+// serch through the followers and the followers
+searchInput.addEventListener("input", (e) => {
+  e.preventDefault();
+  const search = searchInput.value;
+  const filteredsers = suggested.filter((user) => {
+    return user.username.includes(search);
+  });
+  displaySuggestedUsers(filteredsers);
+
+  const filteredPosts = displayedPosts.filter((post) => {
+    return post.content.includes(search);
+  });
+  renderPosts(filteredPosts);
+});
+
 // Explore Random Posts
 const explorePosts = async () => {
   const res = await fetch("http://localhost:5000/api/v1/posts/fetch", {
@@ -23,12 +61,12 @@ const explorePosts = async () => {
   const data = await res.json();
   let html = "";
   const posts = data.posts;
+  displayedPosts = posts;
 
   return renderPosts(posts);
 };
 
 const explore = document.querySelector(".explore-menu");
-console.log(explore);
 explore.addEventListener("click", async () => {
   postsContainer.innerHTML = "";
   // Fetching the posts
@@ -36,7 +74,6 @@ explore.addEventListener("click", async () => {
 });
 
 const explore1 = document.querySelector(".explore-nav");
-console.log(explore);
 explore1.addEventListener("click", async () => {
   postsContainer.innerHTML = "";
   // Fetching the posts
@@ -44,7 +81,6 @@ explore1.addEventListener("click", async () => {
 });
 
 const home = document.querySelector(".home-menu");
-console.log(explore);
 home.addEventListener("click", async () => {
   postsContainer.innerHTML = "";
   // Fetching the posts
@@ -52,12 +88,125 @@ home.addEventListener("click", async () => {
 });
 
 const home1 = document.querySelector(".home-nav");
-console.log(explore);
 home1.addEventListener("click", async () => {
   postsContainer.innerHTML = "";
   // Fetching the posts
   await fetchPosts();
 });
+
+const myPostsBtn = document.querySelector(".posts-menu");
+const myPostsBtn1 = document.querySelector(".posts-nav");
+
+// My  Posts
+const myPosts = async () => {
+  const user_id = JSON.parse(localStorage.getItem("user_id"));
+  const res = await fetch(
+    `http://localhost:5000/api/v1/posts/myPost/${user_id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const data = await res.json();
+  let html = "";
+  const posts = data.posts;
+  displayedPosts = posts;
+
+  return renderMyPosts(posts);
+};
+
+const renderMyPosts = async (posts) => {
+  if (posts.length == 0) {
+    postsContainer.innerHTML = "<h1>No Posts Yet</h1>";
+  }
+  let html = "";
+  for (const post of posts) {
+    html += `
+    <div class="card card-custom" style="width: 18rem" postId=${post.post_id}>
+    <div class="card-body">
+      <div class="card-header">
+        <span class="material-symbols-outlined"> person </span>
+        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+          post.post_id
+        }">
+          @${post.username}</a
+        >
+      </div>
+      <p class="card-text"  >
+      <a class="content-link" href="http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+        post.post_id
+      }">
+      ${post.content}
+
+      </a>
+      </p>
+    </div>
+    <a
+      class="post"
+      href="http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+        post.post_id
+      }"
+    >
+    
+    
+    ${
+      post.video
+        ? `<video controls src=${post.video} class="card-img-top video"></video>`
+        : `
+      ${
+        post.image
+          ? `
+        <img
+        class="card-img-top img-custom"
+        src= ${post.image}
+        alt="Card image cap"
+        />
+        `
+          : ""
+      }
+      `
+    }
+    
+    
+    <div class="card-footer">
+      <div class="actions">
+        <span class="material-symbols-outlined edit" id=${
+          post.post_id
+        } > edit </span>
+        <a class="nav-link active" aria-current="page" href="#" id=${
+          post.post_id
+        }>EDIT</a>
+      </div>
+      <div class="actions">
+        <span class="material-symbols-outlined delete" id=${post.post_id}>
+          delete
+        </span>
+        <a class="nav-link active" aria-current="page" href= "#">DELETE</a>
+      </div>
+  </div>
+
+
+
+    `;
+  } // add the content as the last child of the main content div
+  postsContainer.innerHTML = html;
+};
+
+myPostsBtn.addEventListener("click", async () => {
+  postsContainer.innerHTML = "";
+  // Fetching the posts
+  await myPosts();
+});
+
+myPostsBtn1.addEventListener("click", async () => {
+  postsContainer.innerHTML = "";
+  // Fetching the posts
+  await myPosts();
+});
+
 // Fetch Logged in User
 const fetchUser = async (token) => {
   try {
@@ -125,7 +274,7 @@ const uploadMedia = async (file, type) => {
     console.log(data);
     return await data.url;
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
     console.log(error);
     // Handle error appropriately
   }
@@ -151,11 +300,11 @@ const followUser = async (followed) => {
   const response = await res.json();
 
   console.log(response);
-  alert(response.message);
+  showAlert(response.message);
 };
 
 followers.addEventListener("click", async (e) => {
-  if (e.target.classList.contains("btn")) {
+  if (e.target.classList.contains("toFollow")) {
     const followed = e.target.getAttribute("id");
     followUser(followed);
     await fetchNotFollowedUsers();
@@ -170,16 +319,16 @@ postImage.addEventListener("change", async (event) => {
     videUploadContainer.classList.add("disabled");
     // disable the postBtn by adding a class disabled
     postBtn.classList.add("disabled");
-    alert("Uploading Image, Please wait a moment");
+    showAlert("Uploading Image, Please wait a moment");
     // upload the image to cloudinary
     imgUrl = await uploadMedia(imgUpload, "image");
-    alert("Image Uploaded Successfully");
+    showAlert("Image Uploaded Successfully");
     // enable the postBtn by removing the class disabled
     postBtn.classList.remove("disabled");
   }
 
   if (imgUpload !== "" && videoUpload !== "") {
-    alert("You can only upload an image or a video");
+    showAlert("You can only upload an image or a video");
   }
 });
 
@@ -191,11 +340,11 @@ postVideo.addEventListener("change", async (event) => {
     // disable the image upload container
     imgUploadContainer.classList.add("disabled");
     // disable the postBtn by adding a class disabled
-    alert("Uploading Image, Please wait a moment");
+    showAlert("Uploading Video, Please wait a moment");
     postBtn.classList.add("disabled");
     // upload the image to cloudinary
     videoUrl = await uploadMedia(videoUpload, "video");
-    alert("Video Uploaded Successfully");
+    showAlert("Video Uploaded Successfully");
     // enable the postBtn by removing the class disabled
     postBtn.classList.remove("disabled");
   }
@@ -227,7 +376,20 @@ postForm.addEventListener("submit", async (e) => {
       const data = await res.json();
 
       console.log(data);
-      alert("Post Added Successfully");
+      // clear the input fields
+      postInput.value = "";
+      showAlert("Post Added Successfully");
+    }
+
+    if (e.target.classList.contains("edit")) {
+      const content = {
+        content: postInput.value,
+        image: imgUrl,
+        video: videoUrl,
+      };
+
+      await editPost(postId, content);
+      await myPosts();
     }
   } catch (error) {
     console.log(error);
@@ -293,7 +455,7 @@ const renderPosts = async (posts) => {
         <span class="material-symbols-outlined like" id=${
           post.post_id
         }> favorite </span>
-        <a class="nav-link active" aria-current="page" href="#">${
+        <a class="nav-link active likeCount" aria-current="page" href="#">${
           post.likes
         }</a>
       </div>
@@ -307,15 +469,11 @@ const renderPosts = async (posts) => {
         >
           comment
         </a>
-        <a class="nav-link active" aria-current="page" href=""http://127.0.0.1:5500/frontend/single-post/index.html?id=${
+        <a class="nav-link active count" aria-current="page" href=""http://127.0.0.1:5500/frontend/single-post/index.html?id=${
           post.post_id
         }">${await fetchPostCommentsCount(post.post_id)}</a>
       </div>
-      <div class="actions">
-        <span class="material-symbols-outlined"> share </span>
-        <a class="nav-link active" aria-current="page" href="#"></a>
-      </div>
-    </div>
+
   </div>
 
   <form class="d-flex justify-content-center commentForm" role="search">
@@ -326,7 +484,7 @@ const renderPosts = async (posts) => {
       aria-label="Search"
     />
 
-    <button class="btn postBtn" type="submit">
+    <button class="btn commentBtn" type="submit">
       <span class="material-symbols-outlined send" id=${
         post.post_id
       } > send </span>
@@ -355,7 +513,7 @@ const fetchPostCommentsCount = async (postId) => {
     return (count =
       data?.comments?.length == undefined ? 0 : data.comments.length);
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -374,14 +532,15 @@ const fetchPosts = async () => {
     );
 
     const data = await res.json();
-    console.log(data);
     let posts;
     let html = "";
     if (data.message === "No posts found") {
       posts = [];
       return renderPosts(posts);
     }
+
     posts = data.posts;
+    displayedPosts = posts;
     return renderPosts(posts);
   } catch (error) {
     console.log(error);
@@ -401,20 +560,29 @@ const fetchNotFollowedUsers = async () => {
   const data = await res.json();
   if (data.message !== "Could not retrieve followers") {
     const users = data.followers;
-    let html = "";
-    users.forEach((user) => {
-      html += `
-      <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@${user.username}</a
-            >
-            <div class="btn btn-outline-primary rounded-pill" id=${user.id}>Follow</div>
-          </div>
-    `;
-    });
-    followers.innerHTML = html;
+    suggested = users;
+    return displaySuggestedUsers(users);
   }
+};
+
+const displaySuggestedUsers = (users) => {
+  if (users.length == 0) {
+    followers.innerHTML = "<h1>No Users Found</h1>";
+  }
+  let html = "";
+
+  users.forEach((user) => {
+    html += `
+    <div class="persons">
+          <span class="material-symbols-outlined"> person </span>
+          <a class="nav-link active" aria-current="page" href="#"
+            >@${user.username}</a
+          >
+          <div class="btn btn-outline-primary toFollow rounded-pill" id=${user.id}>Follow</div>
+        </div>
+  `;
+  });
+  followers.innerHTML = html;
 };
 
 const commentPost = async (content, user_id, post_id) => {
@@ -427,9 +595,10 @@ const commentPost = async (content, user_id, post_id) => {
       },
     });
     const data = await res.json();
-    alert(data.message);
+    window.location.reload();
+    showAlert(data.message);
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };
 
@@ -447,18 +616,96 @@ postsContainer.addEventListener("click", async (e) => {
 
     // make sure the input has something before you comment
     if (content.trim() === "") {
-      return alert("Please write something before you comment");
+      return showAlert("Please write something before you comment");
     }
 
     await commentPost(content, user_id, post_id);
-    alert("Comment Added Successfully");
+    showAlert("Comment Added Successfully");
   }
 
   if (e.target.classList.contains("like")) {
     const post_id = e.target.getAttribute("id");
+    // add the class clicked on the icon
+    e.target.classList.add("clicked");
     likePost(post_id);
   }
+  if (e.target.classList.contains("delete")) {
+    const postId = e.target.getAttribute("id");
+    await deletePost(postId);
+  }
+  if (e.target.classList.contains("edit")) {
+    e.preventDefault();
+    const postId = e.target.getAttribute("id");
+    const post = await fetchPost(postId);
+    // prefil the input and image input with the initial posts data first
+    postInput.value = post.content;
+    postImage.src = post.image;
+    postVideo.src = post.video;
+    // add edit class to the postForm
+    postForm.classList.add("edit");
+  }
 });
+
+const editPost = async (postId, content) => {
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/posts/update/${postId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(content),
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+    showAlert("Post Updated successfully");
+    // clear the inputs
+    postInput.value = "";
+  } catch (error) {
+    showAlert(error.message);
+  }
+};
+
+const deletePost = async (postId) => {
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/posts/delete/${postId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    showAlert(data.message);
+    await myPosts();
+  } catch (error) {
+    showAlert(error.message);
+  }
+};
+
+const fetchPost = async (postId) => {
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/posts/get/${postId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    const post = data.post;
+    console.log(post);
+    return post;
+  } catch (error) {
+    showAlert(error.message);
+  }
+};
 
 // Like a post
 
@@ -481,6 +728,6 @@ const likePost = async (post_id) => {
     // alert("Post Liked Successfully");
     await fetchPosts();
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
   }
 };

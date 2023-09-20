@@ -7,6 +7,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   /* border: 3px solid #040403; */
+  background-color: #1e1f24 !important;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -29,6 +30,18 @@ body {
 }
 .brand-name {
   font-size: 50px;
+}
+
+.brand-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1vh;
+}
+.brand-container > a {
+  text-decoration: none;
+  color: #6e767d;
+  font-size: 25px;
 }
 
 .menu {
@@ -78,12 +91,12 @@ body {
   font-size: 20px;
 }
 #searchbar::placeholder {
-  color: black;
+  color: #6e767d;
   font-size: 25px;
   text-align: center;
 }
 #searchicon {
-  color: #fffffc;
+  color: #6e767d;
   font-size: 30px;
   margin-left: 10px;
   cursor: pointer;
@@ -107,29 +120,21 @@ body {
   align-items: center;
 }
 
-.hero {
-  background-image: url("https://cdn.dribbble.com/users/32512/screenshots/2904026/media/0c7953b78a2af85d235e4bf1ee8825e0.gif");
-  /* background-size: cover; */
-  object-fit: cover;
-  /* background-repeat: no-repeat; */
-
-  background-position: center;
-  height: 70vh;
-  width: 100vw;
-  /* border: 2px solid green; */
-}
-
 .alert {
-  margin-top: 2vh;
-  width: 30vw;
-  height: 7vh;
-  border: 1px solid white;
-  border-radius: 10px;
-  background-color: rgb(0, 128, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  gap: 1rem;
+  color: white;
+  border-radius: 10.264px;
+  border: 0.513px solid black;
+  background: #6e767d;
+  width: 40vw;
+  font-size: 18px;
+  padding: 10px 20px;
+  height: 8vh;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 .my-shop-products {
   display: flex;
@@ -169,12 +174,17 @@ body {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 1vh;
+  color: #6e767d;
 }
 .product-desc {
   width: 20vw;
+  height: 20vh;
   font-size: 20px;
   font-weight: 400px;
   margin-bottom: 1vh;
+  color: #6e767d;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .details {
@@ -191,7 +201,7 @@ body {
   border: 1px solid #040403;
   border-radius: 10px;
   font-size: 30px;
-  color: #040403;
+  color: #6e767d;
 }
 .quntity {
   width: 8vw;
@@ -201,8 +211,7 @@ body {
   align-items: center;
   border-radius: 10px;
   font-size: 30px;
-  background-color: #040403;
-  color: #fffffc;
+  color: #6e767d;
 }
 
 .action-btn {
@@ -219,7 +228,7 @@ body {
 }
 .action-btn:hover {
   background-color: white;
-  color: #040403;
+  color: #6e767d;
 }
 
 @media screen and (max-width: 440px) {
@@ -334,7 +343,7 @@ body {
   }
 
   #searchbar::placeholder {
-    color: black;
+    color: #6e767d;
     font-size: 18px;
     text-align: center;
   }

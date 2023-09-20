@@ -2,7 +2,7 @@
 const profile = document.querySelector(".profile");
 window.onload = async () => {
   await fetchProduct();
-  const username = localStorage.getItem("loggedUser");
+  const username = localStorage.getItem("username");
   if (username !== null || username == "") {
     profile.innerHTML = username;
   }
@@ -14,7 +14,7 @@ let product;
 const fetchProduct = async () => {
   let html = "";
   const res = await fetch(
-    `https://shopieapi.azurewebsites.net/api/v1/products/${productId}`
+    `http://localhost:5000/api/v1/products/get/${productId}`
   );
   const object = await res.json();
   console.log(object);
@@ -35,7 +35,6 @@ const fetchProduct = async () => {
     </div>
     <div class="details">
       <div class="price">KSH.${product.price}/=</div>
-      <div class="quntity">${product.quantity}<small>pieces</small></div>
     </div>
     <button class="action-btn">Add To Cart</button>
   </div>
@@ -60,6 +59,6 @@ main.addEventListener("click", (e) => {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
     window.location.href =
-      "http://127.0.0.1:5500/frontend/user-dashboard/cart/index.html";
+      "http://127.0.0.1:5500/frontend/market-place/cart/index.html";
   }
 });

@@ -7,6 +7,7 @@ const followers = document.querySelector(".followers");
 const following = document.querySelector(".following");
 const profileImage = document.querySelector("#imgInput");
 const updateForm = document.querySelector(".updateForm");
+let fetchedUser;
 window.onload = async () => {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -30,6 +31,25 @@ const logoutBtn = document.querySelector("#logout");
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("token");
   window.location.href = "/frontend/login/index.html";
+});
+
+const alertBox = document.getElementById("alertBox");
+const alertMessage = document.getElementById("alertMessage");
+
+// Function to show the alert box
+const showAlert = (message) => {
+  alertBox.style.display = "block";
+  alertMessage.innerHTML = `${message}`;
+};
+
+// Function to hide the alert box
+const hideAlert = () => {
+  alertBox.style.display = "none";
+};
+
+// close the button on clicking anyware in the window
+window.addEventListener("click", (e) => {
+  hideAlert();
 });
 
 sales.addEventListener("click", () => {
@@ -66,11 +86,12 @@ const fetchUser = async (token) => {
     profileSection.innerHTML = `
 
 
-    <img src=${user.profile} alt="" srcset="">
+    <img class='profile-pic' src=${user.profile} alt="" srcset="">
     <h5 class="username">@${user.username}</h5>
     <h5 class="bio">${user.bio}</h5>
 
     `;
+    fetchedUser = user;
   } catch (error) {
     console.log(error);
   }
@@ -95,7 +116,7 @@ const uploadMedia = async (file, type) => {
     console.log(data);
     return await data.url;
   } catch (error) {
-    alert(error);
+    showAlert(error.message);
     console.log(error);
     // Handle error appropriately
   }
@@ -105,10 +126,10 @@ const uploadMedia = async (file, type) => {
 profileImage.addEventListener("change", async (event) => {
   let imgUpload = event.target.files[0];
   if (imgUpload !== "") {
-    alert("Uploading Image, Please wait a moment");
+    showAlert("Uploading Image, Please wait a moment");
     // upload the image to cloudinary
     imgUrl = await uploadMedia(imgUpload, "image");
-    alert("Image Uploaded Successfully");
+    showAlert("Image Uploaded Successfully");
 
     const imgData = {
       profile: imgUrl,
@@ -129,9 +150,16 @@ profileImage.addEventListener("change", async (event) => {
       });
 
       const data = await res.json();
+      console.log(data);
+      profileSection.innerHTML = ``;
+      const updatedUser = data.data;
+      profileSection.innerHTML = ` 
+      <img src=${updatedUser.profile} alt="" srcset="">
+      <h5 class="username">@${updatedUser.username}</h5>
+      <h5 class="bio">${updatedUser.bio}</h5>
+      `;
 
-      await pageInitializer();
-      alert("Profile Updated Successfully");
+      showAlert("Profile Updated Successfully");
     } catch (error) {
       console.log(error);
     }
@@ -152,24 +180,32 @@ const updateUser = async (event) => {
   };
   console.log(updateData);
   if (username === null && bio === null && email === null) {
-    return alert("Please fill in the fields you want to update");
+    return showAlert("Please fill in the fields you want to update");
   }
 
   try {
     const user_id = JSON.parse(localStorage.getItem("user_id"));
-    const res = await fetch(
-      `http://localhost:5000/api/v1/users/update/${user_id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(updateData),
-      }
-    );
+    console.log(JSON.stringify(updateData));
+    const url = `http://localhost:5000/api/v1/users/update/${user_id}`;
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+      body: JSON.stringify(updateData),
+    });
 
     const data = await res.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
+    const updatedUser = data.data;
+
+    profileSection.innerHTML = `
+      <img src=${updatedUser.profile} alt="" srcset="">
+      <h5 class="username">@${updatedUser.username}</h5>
+      <h5 class="bio">${updatedUser.bio}</h5>
+  
+      `;
+  } catch (error) {}
 };
 
 updateForm.addEventListener("submit", updateUser);
@@ -225,6 +261,6 @@ following.addEventListener("click", async (e) => {
   if (e.target.classList.contains("btn")) {
     const id = e.target.getAttribute("id");
     await unfollow(id);
-    alert("You have unfollowed this user");
+    showAlert("You have unfollowed this user");
   }
 });

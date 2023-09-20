@@ -48,7 +48,7 @@ const productContainer = document.querySelector(".my-shop-products");
 
 const fetchProducts = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/v1/products");
+    const res = await fetch("http://localhost:5000/api/v1/products/fetch");
     const object = await res.json();
     console.log(object);
 
@@ -77,9 +77,8 @@ const displayProducts = async (object) => {
       </div>
       <div class="details">
         <div class="price">KSH. ${product.price} /=</div>
-        <div class="quntity">${product.quantity} <small>pieces</small></div>
       </div>
-      <button class="action-btn">Add Cart</button>
+      <button class="action-btn">Add To Cart</button>
     </div>
         `;
     });
@@ -94,7 +93,7 @@ productContainer.addEventListener("click", async (e) => {
   if (e.target.classList.contains("action-btn")) {
     const productId = e.target.parentElement.id;
     const res = await fetch(
-      `http://localhost:5000/api/v1/products/${productId}`
+      `http://localhost:5000/api/v1/products/get/${productId}`
     );
     const object = await res.json();
     console.log(object);
@@ -124,6 +123,6 @@ productContainer.addEventListener("click", async (e) => {
   // clicking the image to view the product
   if (e.target.classList.contains("product-img")) {
     const productId = e.target.parentElement.id;
-    window.location.href = `http://127.0.0.1:5500/frontend/user-dashboard/single-product/index.html?id=${productId}`;
+    window.location.href = `http://127.0.0.1:5500/frontend/market-place/single-product/index.html?id=${productId}`;
   }
 });
