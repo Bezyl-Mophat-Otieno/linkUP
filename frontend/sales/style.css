@@ -1,0 +1,261 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
+}
+
+.body {
+  background-color: #15181c;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* padding: 30px 20px; */
+}
+.navbar {
+  display: none;
+}
+
+.main {
+  display: flex;
+  width: 95vw;
+  align-items: flex-start;
+  margin-top: 5vh;
+  gap: 30px;
+}
+.leftNav {
+  position: sticky;
+  top: 0;
+  margin-left: 2vw;
+  width: 20vw;
+  /* border: 2px solid  #6E767D; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  background-color: #1e1f24;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px 0px rgba(2, 102, 102, 0.7),
+    1px 2px 4px 0px rgba(2, 104, 104, 0.7),
+    2px 4px 8px 0px rgba(4, 134, 134, 0.7),
+    2px 4px 16px 0px rgba(6, 119, 119, 0.7);
+}
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  color: white;
+}
+.brandLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+  margin: 10px;
+  border-radius: 10%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  margin-top: 5vh;
+  color: white;
+}
+.persons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 5vh;
+  color: white;
+}
+
+.material-symbols-outlined {
+  color: #6e767d;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.mainContent {
+  width: 60vw;
+  height: 70vh;
+  border: 2px solid #6e767d;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 20px;
+}
+
+.explore {
+  cursor: pointer;
+}
+
+/* Style for the table container */
+.table-container {
+  margin: 20px;
+  background-color: #333; /* Dark background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow for a card-like effect */
+}
+
+/* Style for the sales table */
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style for table headers */
+.sales-table th {
+  background-color: #555; /* Darker background for headers */
+  color: #fff; /* Light text color for headers */
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style for table data cells */
+.sales-table td {
+  border: 1px solid #444; /* Border for each cell */
+  padding: 10px;
+  color: #ccc; /* Light text color for table data */
+}
+
+/* Style for alternating row colors */
+.sales-table tbody tr:nth-child(even) {
+  background-color: #444; /* Slightly darker background for even rows */
+}
+
+/* Hover effect on rows */
+.sales-table tbody tr:hover {
+  background-color: #666; /* Darker background on hover */
+}
+
+@media screen and (max-width: 412px) {
+  .navbar {
+    display: contents;
+  }
+
+  .navbar-custom {
+    background-color: #1e1f24 !important;
+    color: white;
+  }
+  .brand-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vh;
+  }
+  .material-symbols-outlined {
+    color: #6e767d;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .navbar-brand {
+    color: #6e767d;
+  }
+  .navbar-toggler-custom {
+    border: 2px solid #6e767d !important;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .material-symbols-outlined {
+    color: #6e767d !important;
+  }
+  .nav-link {
+    color: white !important;
+  }
+  .nav-item {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 3vh;
+  }
+  .offcanvas-custom {
+    color: white;
+    background-color: #15181c;
+  }
+  .accounts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3vh;
+  }
+  .btn-close-custom {
+    color: #6e767d !important;
+    background-color: #6e767d;
+  }
+  .form-control {
+    background-color: #1e1f24 !important;
+    border: 1px solid #6e767d !important;
+    color: #6e767d !important;
+  }
+  .form-control::placeholder {
+    color: #6e767d !important;
+  }
+  .leftNav {
+    display: none;
+  }
+  .rightNav {
+    display: none;
+  }
+  .mainContent {
+    margin-top: 5vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* border: 2px solid green; */
+  }
+  .card-custom {
+    background-color: #15181c;
+    color: white;
+    margin-top: 5vh;
+    width: 90% !important;
+    margin: 0 auto;
+    margin-top: 5vh;
+  }
+  .card-header {
+    background-color: #1e1f24;
+    color: white;
+    border-bottom: 1px solid #6e767d;
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+  }
+  .card-body {
+    border: 1px solid #6e767d;
+    border-radius: 20px 20px 0px 0px;
+  }
+  .img-custom {
+    height: 20vh;
+    object-fit: cover;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .actions {
+    display: flex;
+    /* gap: 20px */
+    align-items: center;
+  }
+}

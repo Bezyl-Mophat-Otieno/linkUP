@@ -4,7 +4,7 @@
   box-sizing: border-box;
   font-size: 1.1rem;
 }
-body {
+.body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   overflow: hidden;
@@ -25,6 +25,23 @@ body {
   /* border: 2px solid white; */
   gap: 2rem;
   padding: 30px 20px;
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  border-radius: 10.264px;
+  border: 0.513px solid black;
+  background: #6e767d;
+  width: 40vw;
+  font-size: 18px;
+  padding: 10px 20px;
+  height: 8vh;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 .brand {
   width: 50%;

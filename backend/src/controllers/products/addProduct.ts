@@ -1,4 +1,4 @@
-import DB from "../../database/dbHelper.js";
+import DB from "../../database/dbHelper.ts";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { v4 } from "uuid";
@@ -12,7 +12,7 @@ const addProduct = async (req: Request, res: Response) => {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .json({ message: "Please fill all fields" });
-        console.log({ ...req.body, id });
+    console.log({ ...req.body, id });
     const result = await DB.executeProcedure("addProduct", { ...req.body, id });
 
     if (result.rowsAffected[0] === 0)

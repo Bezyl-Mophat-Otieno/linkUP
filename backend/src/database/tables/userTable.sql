@@ -10,3 +10,14 @@ CREATE TABLE userTable (
 
 );
 
+
+ALTER TABLE userTable ADD bio VARCHAR(255) NULL;
+
+
+-- Disable foreign key constraints
+EXEC sp_MSforeachtable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL';
+
+-- Run your DELETE or TRUNCATE statements here
+
+-- Enable foreign key constraints
+EXEC sp_MSforeachtable 'ALTER TABLE ? CHECK CONSTRAINT ALL';

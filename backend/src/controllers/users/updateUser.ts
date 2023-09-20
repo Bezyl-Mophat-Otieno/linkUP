@@ -1,4 +1,4 @@
-import DB from "../../database/dbHelper.js";
+import DB from "../../database/dbHelper.ts";
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import { StatusCodes } from "http-status-codes";
@@ -22,6 +22,7 @@ const updateUser = async (req: Request, res: Response) => {
         message: "User not found.Therefore not updated",
         status: "failed",
       });
+    console.log(result);
     return res
       .status(200)
       .json({ message: "User updated successfully", status: "success" });

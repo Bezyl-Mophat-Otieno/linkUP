@@ -1,6 +1,10 @@
 CREATE OR ALTER PROCEDURE addSubComment
-    @comment_id VARCHAR(255),
-    @status BIT
+    @comment VARCHAR(255),
+    @subComment_id VARCHAR(255)
     AS BEGIN
-        UPDATE commentTable SET subcomment = @status WHERE comment_id = @comment_id;
+        INSERT INTO subCommentTable (comment,subComment_id)
+        VALUES (@comment,@subcomment_id);
+        UPDATE commentTable SET subcomment = 1 WHERE comment_id = @comment;
+
+
     END;

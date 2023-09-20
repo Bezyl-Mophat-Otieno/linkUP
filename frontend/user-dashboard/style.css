@@ -126,23 +126,19 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 20px;
-  width: 100%;
-  margin-top: 5vh;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 .persons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-  margin-top: 5vh;
   color: white;
+  width: 30vw;
 }
 
 .material-symbols-outlined {
@@ -163,7 +159,7 @@
 }
 .img-custom {
   height: 40vh;
-  object-fit: cover;
+  object-fit: contain;
 }
 .card-header {
   background-color: #1e1f24;
@@ -175,6 +171,7 @@
 }
 
 .card-footer {
+  margin-top: 3vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -182,7 +179,8 @@
 
 .actions {
   display: flex;
-  /* gap: 20px */
+  justify-content: space-between;
+  gap: 20px;
   align-items: center;
 }
 
@@ -190,6 +188,99 @@
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
+}
+.post .img-custom {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.posts h1 {
+  color: white;
+}
+
+.explore {
+  cursor: pointer;
+}
+.content-link {
+  color: white;
+  text-decoration: solid;
+}
+
+/* Style for the custom file input label */
+.custom-file-input {
+  margin-top: 3vh;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1e1f24;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-input:hover {
+  background-color: black;
+  color: white;
+}
+
+.uploads {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.disabled {
+  pointer-events: none;
+}
+.commentInput {
+  background-color: #1e1f24;
+  color: #6e767d;
+  border: 2px solid #6e767d;
+}
+.commentInput::placeholder {
+  color: #6e767d;
+}
+.video {
+  height: 80vh;
+  object-fit: cover;
+}
+
+/* Styles for the alert box container */
+.alertContainer {
+  position: relative;
+}
+
+/* Styles for the alert box */
+.alert-box {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: white;
+  color: #6e767d;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(221, 219, 219, 0.5);
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
+.message {
+  color: #37423d;
+}
+/* Styles for the close button */
+.close-btn {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
+}
+.clicked {
+  background-color: #6e767d;
 }
 
 @media screen and (max-width: 412px) {
@@ -292,11 +383,17 @@
     border: 1px solid #6e767d;
     border-radius: 20px 20px 0px 0px;
   }
-  .img-custom {
+
+  .video-custom {
     height: 20vh;
     object-fit: cover;
   }
   .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .my-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;

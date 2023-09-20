@@ -12,7 +12,7 @@
   justify-content: center;
   /* align-items: center; */
   width: 100vw;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
   /* padding: 30px 20px; */
 }
@@ -85,8 +85,8 @@
 }
 
 .img-custom {
-  height: 30vh;
-  object-fit: cover;
+  height: 20vh;
+  object-fit: contain;
 }
 .card-header {
   display: flex;
@@ -108,7 +108,7 @@
   align-items: center;
 }
 
-.recieved .card-custom {
+.comment .card-custom {
   background-color: #15181c;
   color: white;
   margin-top: 5vh;
@@ -116,12 +116,59 @@
   border-radius: 20px 20px 20px 0px;
 }
 
-.sent .card-custom {
+.comment .card-custom {
   background-color: #15181c;
   color: white;
   margin-top: 5vh;
   width: 15vw !important;
   border-radius: 20px 20px 20px 0px;
+}
+
+.material-symbols-outlined {
+  color: #6e767d;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.video {
+  height: 60vh;
+  object-fit: cover;
+}
+
+/* Styles for the alert box container */
+.container {
+  position: relative;
+}
+
+/* Styles for the alert box */
+.alert-box {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: white;
+  color: #37423d;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(221, 219, 219, 0.5);
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
+.message {
+  color: #37423d;
+}
+/* Styles for the close button */
+.close-btn {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
 }
 
 @media screen and (max-width: 412px) {
@@ -198,7 +245,7 @@
     width: 90% !important;
   }
 
-  .recieved .card-custom {
+  .comment .card-custom {
     background-color: #15181c;
     color: white;
     margin-top: 5vh;
@@ -206,7 +253,7 @@
     border-radius: 20px 20px 20px 0px;
   }
 
-  .sent .card-custom {
+  .comment .card-custom {
     background-color: #15181c;
     color: white;
     margin-top: 5vh;
@@ -247,7 +294,8 @@
     height: 5vh;
   }
   .img-custom {
-    height: 20vh;
+    height: 60vh;
+    width: 30vw;
     object-fit: cover;
   }
   .card-footer {

@@ -1,5 +1,5 @@
 import {Request,Response} from 'express';
-import DB from '../../database/dbHelper.js';
+import DB from '../../database/dbHelper.ts';
 import { StatusCodes } from 'http-status-codes';
 
 

@@ -1,4 +1,4 @@
-import DB from '../../database/dbHelper.js';
+import DB from "../../database/dbHelper.ts";
 import { Request, Response } from "express";
 
 const deactivateUser = async (req: Request, res: Response) => {

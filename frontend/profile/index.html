@@ -51,7 +51,7 @@
                 <span class="material-symbols-outlined">
                   production_quantity_limits
                   </span>
-                  <a class="nav-link active" aria-current="page" href="#">My Orders</a>
+                  <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/orders/index.html">My Orders</a>
                 </div>
 
 
@@ -62,74 +62,16 @@
                 <span class="material-symbols-outlined">
                   real_estate_agent
                   </span>
-                  <a class="nav-link active" aria-current="page" href="#">Sales</a>
-                </div>
-              <li class="nav-item">
-                <span class="material-symbols-outlined">
-                  person_search
-                  </span>
-                  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                    Followers
-                  </a>
-              </li>
-
-              <!-- offcanvas goes here  -->
-
-              <div class="offcanvas offcanvas-start offcanvas-custom" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                <div class="offcanvas-header">
-                  <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/sales/index.html">Sales</a>
                 </div>
 
-                <div class="offcanvas-body">
-                  <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Who are you looking for ?" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </form>
-                    <h5> Who to follow</h5>
-                  <div class="accounts">
-                    <span class="material-symbols-outlined">
-                      person
-                      </span>
-                    <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-                    <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
+                <div class="nav-item">
+                  <span class="material-symbols-outlined">
+                    real_estate_agent
+                    </span>
+                    <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/frontend/network/index.html">Network</a>
                   </div>
-                  <div class="accounts">
-                    <span class="material-symbols-outlined">
-                      person
-                      </span>
-                    <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-                    <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-                  </div>
-                  <div class="accounts">
-                    <span class="material-symbols-outlined">
-                      person
-                      </span>
-                    <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-                    <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-                  </div>
-                  <div class="accounts">
-                    <span class="material-symbols-outlined">
-                      person
-                      </span>
-                    <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-                    <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-                  </div>
-                  <div class="accounts">
-                    <span class="material-symbols-outlined">
-                      person
-                      </span>
-                    <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-                    <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-                  </div>
-                  <div class="accounts">
-                    <span class="material-symbols-outlined">
-                      person
-                      </span>
-                    <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-                    <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-                  </div>
-                </div>
-              </div>
+              
               <li class="nav-item">
                 <span class="material-symbols-outlined">
                   storefront
@@ -142,7 +84,7 @@
                 <span class="material-symbols-outlined">
                   logout
                   </span>
-                <a class="nav-link active" aria-current="page" href="#">Log-out</a>
+                <a class="nav-link active" aria-current="page" id="logout" href="#">Log-out</a>
               </li>
             </ul>
        </div>
@@ -181,133 +123,21 @@
           <span class="material-symbols-outlined"> real_estate_agent </span>
           <a
             class="navbar-brand"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasBottom"
-            aria-controls="offcanvasRight"
-            class="material-symbols-outlined"
-            href="#"
+            href="http://127.0.0.1:5500/frontend/sales/index.html"
             id="sales"
             >Sales</a
           >
         </div>
 
-        <div
-          class="offcanvas offcanvas-custom offcanvas-end"
-          tabindex="-1"
-          id="offcanvasBottom"
-          aria-labelledby="offcanvasBottomLabel"
-        >
-          <div class="offcanvas-header">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body small">
-            <!-- Table Goes in here  -->
-
-            <div class="container mt-0">
-              <h2>My Sales</h2>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>American Khaki</td>
-                    <td>KSH1900.99</td>
-                  </tr>
-                  <tr>
-                    <td>Rubber Shoes</td>
-                    <td>KSH290.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+       
         <div class="menuItem">
           <span class="material-symbols-outlined"> work_history </span>
-          <a class="navbar-brand" type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasOrders"
-          aria-controls="offcanvasRight" id="orders" href="#">Orders</a>
+          <a class="navbar-brand" type="button" id="orders" href="http://127.0.0.1:5500/frontend/orders/index.html">Orders</a>
         
           </button>
         </div>
 
-        <div
-          class="offcanvas offcanvas-custom offcanvas-end"
-          tabindex="-1"
-          id="offcanvasOrders"
-          aria-labelledby="offcanvasBottomLabel"
-        >
-          <div class="offcanvas-header">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body small">
-            <!-- Table Goes in here  -->
-
-            <div class="container mt-0">
-              <h2>My Orders</h2>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>American Khaki</td>
-                    <td>KSH1900.99</td>
-                  </tr>
-                  <tr>
-                    <td>Rubber Shoes</td>
-                    <td>KSH290.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                  <tr>
-                    <td>Nike Air-max</td>
-                    <td>KSH1500.99</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        
-
+      
         <div class="menuItem">
           <span class="material-symbols-outlined">
             storefront
@@ -319,31 +149,47 @@
           <span class="material-symbols-outlined">
             follow_the_signs
             </span>
-          <a class="navbar-brand followersBtn" href="#">Followers</a>
+          <a class="navbar-brand followersBtn" href="http://127.0.0.1:5500/frontend/network/index.html">Network</a>
         </div>
 
         <div class="menuItem">
           <span class="material-symbols-outlined">
             logout
             </span>
-          <a class="navbar-brand" href="http://127.0.0.1:5500/frontend/login/index.html#">Log-out</a>
+          <a class="navbar-brand" id="logout"  href="http://127.0.0.1:5500/frontend/login/index.html#">Log-out</a>
         </div>
       </div>
       <div class="mainContent">
+        <div class="container">
+          <div class="alert-box" id="alertBox">
+            <span class="message" id="alertMessage"></span>
+          </div>
+        </div>
         <div class="profileSection">
-          <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" srcset="">
-          <h5 class="name">Bezyl Mophat Otieno</h5>
-          <h5 class="username">@Mophat</h5>
-          <h5 class="role">UX/UI Design</h5>
+
+        </div>
+        <div class="img-upload">
+          <!-- Hidden file input -->
+          <input
+            type="file"
+            id="imgInput"
+            accept="image/*"
+            style="display: none"
+          />
+          <!-- Custom label with a Google icon -->
+          <label for="imgInput" class="custom-file-input">
+            <i class="material-symbols-outlined">cloud_upload</i>
+            Change Profile
+          </label>
         </div>
         <div class="profileDetails">
           <div class="stats">
             <div class="following">
-              <h5 class="count">60</h5>
+              <h5 class="count"></h5>
               <h5 >Following</h5>
             </div>
             <div class="followers">
-              <h5 class="count">1000</h5>
+              <h5 class="count"></h5>
               <h5 >Followers</h5>
             </div>
           </div>
@@ -364,12 +210,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body modal-custom">
-
         <form action="" class="updateForm">
           <input type="text" class="email" placeholder="Enter You New Email Address">
-          <input type="text" class="username" placeholder="Enter Your New Username">
-          <input type="text" class="password" placeholder="Enter Your Password">
-          <input type="text" class="confirmPassword" placeholder="Confirm Your Password">
+          <input type="text" class="username" id="username" placeholder="Enter Your New Username">
+          <textarea name="bio" id="bio" cols="30" rows="5" placeholder="Tell us about yourself"></textarea>
           <button type="submit" class="btn btn-primary">Update</button>  
       </form>
         
@@ -380,46 +224,7 @@
 
         </div>
       </div>
-      <div class="rightNav">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Who are you looking for ?" aria-label="Search">
-          <button class="btn btn-secondary border-0" type="submit">
-            <span class="material-symbols-outlined">
-              search
-              </span>
-          </button>
-          </form>
-          <div class="container">
-            <div class="persons">
-              <span class="material-symbols-outlined">
-                person
-                </span>
-              <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-              <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-            </div>
-            <div class="persons">
-              <span class="material-symbols-outlined">
-                person
-                </span>
-              <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-              <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-            </div>
-            <div class="persons">
-              <span class="material-symbols-outlined">
-                person
-                </span>
-              <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-              <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-            </div>
-            <div class="persons">
-              <span class="material-symbols-outlined">
-                person
-                </span>
-              <a class="nav-link active" aria-current="page" href="#">@Leornado</a>
-              <div class="btn btn-outline-primary rounded-pill">  Follow  </div>
-            </div>
-          </div>
-     </div>
+      
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

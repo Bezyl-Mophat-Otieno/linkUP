@@ -45,13 +45,21 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <span class="material-symbols-outlined"> house </span>
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <button class="nav-link active home-nav" aria-current="page">
+                Home
+              </button>
+            </li>
+            <li class="nav-item">
+              <span class="material-symbols-outlined"> post </span>
+              <button class="nav-link active posts-nav" aria-current="page">
+                My Posts
+              </button>
             </li>
             <li class="nav-item">
               <span class="material-symbols-outlined"> person_search </span>
-              <a class="nav-link active" aria-current="page" href="#"
-                >Explore</a
-              >
+              <button class="nav-link active explore-nav" aria-current="page">
+                Explore
+              </button>
             </li>
             <li class="nav-item">
               <span class="material-symbols-outlined"> manage_accounts </span>
@@ -61,99 +69,6 @@
                 >Profile</a
               >
             </li>
-            <li class="nav-item">
-              <span class="material-symbols-outlined"> person_search </span>
-              <a
-                class="nav-link"
-                data-bs-toggle="offcanvas"
-                href="#offcanvasExample"
-                role="button"
-                aria-controls="offcanvasExample"
-              >
-                Followers
-              </a>
-            </li>
-
-            <!-- offcanvas goes here  -->
-
-            <div
-              class="offcanvas offcanvas-start offcanvas-custom"
-              tabindex="-1"
-              id="offcanvasExample"
-              aria-labelledby="offcanvasExampleLabel"
-            >
-              <div class="offcanvas-header">
-                <button class="btn btn-secondary" type="button">
-                  Followers
-                </button>
-                <button class="btn btn-secondary" type="button">
-                  Following
-                </button>
-                <button
-                  type="button"
-                  class="btn-close btn-close-custom"
-                  data-bs-dismiss="offcanvas"
-                  aria-label="Close"
-                ></button>
-              </div>
-
-              <div class="offcanvas-body">
-                <form class="d-flex" role="search">
-                  <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Who are you looking for ?"
-                    aria-label="Search"
-                  />
-                  <button class="btn btn-outline-primary" type="submit">
-                    Search
-                  </button>
-                </form>
-                <h5>Who to follow</h5>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-                <div class="accounts">
-                  <span class="material-symbols-outlined"> person </span>
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >@Leornado</a
-                  >
-                  <div class="btn btn-outline-primary rounded-pill">Follow</div>
-                </div>
-              </div>
-            </div>
 
             <li class="nav-item">
               <span class="material-symbols-outlined">
@@ -178,34 +93,26 @@
                 What are you selling ?
               </a>
             </li>
-            <li class="nav-item">
-              <span class="material-symbols-outlined"> add </span>
-              <a
-                class="nav-link active btn btn-primary"
-                aria-current="page"
-                href="http://127.0.0.1:5500/frontend/add-product/index.html"
-              >
-                Create a Post.
-              </a>
-            </li>
+            >
             <li class="nav-item">
               <span class="material-symbols-outlined"> logout </span>
               <a
                 class="nav-link active"
                 aria-current="page"
                 href="http://127.0.0.1:5500/frontend/login/index.html#"
+                id="logout"
                 >Log-out</a
               >
             </li>
           </ul>
           <form class="d-flex" role="search">
             <input
-              class="form-control me-2"
+              class="form-control me-2 searchInput"
               type="search"
-              placeholder="Search Story"
+              placeholder="Search Anything here ..."
               aria-label="Search"
             />
-            <button class="btn btn-outline-primary" type="submit">
+            <button class="btn btn-outline-primary searchBtn" type="submit">
               Search
             </button>
           </form>
@@ -219,15 +126,28 @@
       <div class="leftNav">
         <div class="brandLogo">
           <span class="material-symbols-outlined logo"> diversity_3 </span>
-          <a class="navbar-brand" href="#">linkUP</a>
+          <a
+            class="navbar-brand"
+            href="http://127.0.0.1:5500/frontend/chat-room/index.html"
+            >linkUP</a
+          >
         </div>
         <div class="menuItem">
           <span class="material-symbols-outlined"> home_pin </span>
-          <a class="navbar-brand" href="#">Home</a>
+          <button class="nav-link active home-menu">Home</button>
+        </div>
+
+        <div class="menuItem">
+          <span class="material-symbols-outlined"> post </span>
+          <button class="nav-link active posts-menu" aria-current="page">
+            My Posts
+          </button>
         </div>
         <div class="menuItem">
           <span class="material-symbols-outlined"> travel_explore </span>
-          <a class="navbar-brand" href="#">Explore</a>
+          <button class="nav-link active explore-menu" aria-current="page">
+            Explore
+          </button>
         </div>
         <div class="menuItem">
           <span class="material-symbols-outlined"> notifications_active </span>
@@ -240,6 +160,7 @@
         <div class="menuItem">
           <span class="material-symbols-outlined"> storefront </span>
           <a
+            id="market"
             class="navbar-brand"
             href="http://127.0.0.1:5500/frontend/market-place/index.html"
             >Market Place</a
@@ -248,38 +169,28 @@
         <div class="menuItem">
           <span class="material-symbols-outlined"> manage_accounts </span>
           <a
-            class="navbar-brand"
+            class="navbar-brand profile"
             href="http://127.0.0.1:5500/frontend/profile/index.html#"
             >Profile</a
           >
         </div>
-        <div class="menuItem">
-          <span class="material-symbols-outlined"> follow_the_signs </span>
-          <a class="navbar-brand" href="#">Followers</a>
-        </div>
+
         <div class="menuItem">
           <span class="material-symbols-outlined">
             local_convenience_store
           </span>
           <a
-            class="nav-link active btn btn-outline-secondary"
+            class="nav-link active btn btn-outline-secondary add-product"
             aria-current="page"
             href="http://127.0.0.1:5500/frontend/add-product/index.html"
             >What are you selling ?</a
           >
         </div>
-        <div class="menuItem">
-          <span class="material-symbols-outlined"> add </span>
-          <a
-            class="nav-link active btn btn-outline-secondary"
-            aria-current="page"
-            href="http://127.0.0.1:5500/frontend/add-product/index.html"
-            >Create a Post</a
-          >
-        </div>
+
         <div class="menuItem">
           <span class="material-symbols-outlined"> logout </span>
           <a
+            id="logout"
             class="navbar-brand"
             href="http://127.0.0.1:5500/frontend/login/index.html#"
             >Log-out</a
@@ -288,219 +199,71 @@
       </div>
 
       <div class="mainContent">
-        <form class="d-flex justify-content-center" role="search">
+        <div class="alertContainer">
+          <div class="alert-box" id="alertBox">
+            <span class="message" id="alertMessage"></span>
+          </div>
+        </div>
+        <form class="d-flex justify-content-center postForm" role="search">
           <input
-            class="form-control ms-2"
+            class="form-control ms-2 postInput"
             type="text"
             placeholder="What's on your mind ?"
             aria-label="Search"
           />
-          <button class="btn" type="submit">
+
+          <button class="btn postBtn" type="submit">
             <span class="material-symbols-outlined"> send </span>
           </button>
         </form>
-        <div class="card card-custom" style="width: 18rem">
-          <div class="card-body">
-            <div class="card-header">
-              <span class="material-symbols-outlined"> person </span>
-              <a class="nav-link active" aria-current="page" href="#">
-                @Mophat</a
-              >
-            </div>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-          <a
-            class="post"
-            href="http://127.0.0.1:5500/frontend/single-post/index.html"
-          >
-            <img
-              class="card-img-top img-custom"
-              src="https://images.pexels.com/photos/14244864/pexels-photo-14244864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-              alt="Card image cap"
+
+        <div class="uploads">
+          <div class="img-upload">
+            <!-- Hidden file input -->
+            <input
+              type="file"
+              id="imgInput"
+              accept="image/*"
+              style="display: none"
             />
-          </a>
-          <div class="card-footer">
-            <div class="actions">
-              <span class="material-symbols-outlined"> thumb_up </span>
-              <a class="nav-link active" aria-current="page" href="#">300</a>
-            </div>
-            <div class="actions">
-              <!-- Button trigger modal -->
-              <span
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                class="material-symbols-outlined"
-              >
-                comment
-              </span>
-              <a class="nav-link active" aria-current="page" href="#">200</a>
-            </div>
-            <div class="actions">
-              <span class="material-symbols-outlined"> share </span>
-              <a class="nav-link active" aria-current="page" href="#"></a>
-            </div>
+            <!-- Custom label with a Google icon -->
+            <label for="imgInput" class="custom-file-input">
+              <i class="material-symbols-outlined">cloud_upload</i>
+            </label>
           </div>
-        </div>
-
-        <!-- Comments Modal -->
-
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body modal-custom">
-                <form action="" class="updateForm">
-                  <textarea
-                    name=""
-                    placeholder="Share your thoughts"
-                    id=""
-                    cols="30"
-                    rows="5"
-                  ></textarea>
-
-                  <button type="submit" class="btn btn-secondary">
-                    Comment
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card card-custom" style="width: 18rem">
-          <div class="card-body">
-            <div class="card-header">
-              <span class="material-symbols-outlined"> person </span>
-              <a class="nav-link active" aria-current="page" href="#">@John</a>
-            </div>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-          <a
-            class="post"
-            href="http://127.0.0.1:5500/frontend/single-post/index.html"
-          >
-            <img
-              class="card-img-top img-custom"
-              src="https://images.pexels.com/photos/12165333/pexels-photo-12165333.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-              alt="Card image cap"
+          <div class="video-upload">
+            <!-- Hidden file input -->
+            <input
+              type="file"
+              id="videoInput"
+              accept="video/*"
+              style="display: none"
             />
-          </a>
-          <div class="card-footer">
-            <div class="actions">
-              <span class="material-symbols-outlined"> thumb_up </span>
-              <a class="nav-link active" aria-current="page" href="#">300</a>
-            </div>
-            <div class="actions">
-              <span
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                class="material-symbols-outlined"
-              >
-                comment
-              </span>
-              <a class="nav-link active" aria-current="page" href="#">200</a>
-            </div>
-            <div class="actions">
-              <span class="material-symbols-outlined"> share </span>
-              <a class="nav-link active" aria-current="page" href="#"></a>
-            </div>
+            <!-- Custom label with a Google icon -->
+            <label for="videoInput" class="custom-file-input">
+              <i class="material-symbols-outlined">videocam</i>
+            </label>
           </div>
         </div>
-        <div class="card card-custom" style="width: 18rem">
-          <div class="card-body">
-            <div class="card-header">
-              <span class="material-symbols-outlined"> person </span>
-              <a class="nav-link active" aria-current="page" href="#">@John</a>
-            </div>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="actions">
-            <span class="material-symbols-outlined"> thumb_up </span>
-            <a class="nav-link active" aria-current="page" href="#">300</a>
-          </div>
-          <div class="actions">
-            <span
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              class="material-symbols-outlined"
-            >
-              comment
-            </span>
-            <a class="nav-link active" aria-current="page" href="#">200</a>
-          </div>
-          <div class="actions">
-            <span class="material-symbols-outlined"> share </span>
-            <a class="nav-link active" aria-current="page" href="#"></a>
-          </div>
-        </div>
+        <div class="posts"></div>
       </div>
 
       <div class="rightNav">
-        <form class="d-flex" role="search">
+        <form class="d-flex form" role="search">
           <input
-            class="form-control me-2"
+            class="form-control me-2 searchInput-main"
             type="search"
             placeholder="Search Anything Here ..."
             aria-label="Search"
           />
-          <button class="btn btn-outline-secondary" type="submit">
+          <button
+            class="btn btn-outline-secondary searchBtn-main"
+            type="submit"
+          >
             <span class="material-symbols-outlined"> search </span>
           </button>
         </form>
-        <div class="container">
-          <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@Leornado</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
-          </div>
-          <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@Leornado</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
-          </div>
-          <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@Leornado</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
-          </div>
-          <div class="persons">
-            <span class="material-symbols-outlined"> person </span>
-            <a class="nav-link active" aria-current="page" href="#"
-              >@Leornado</a
-            >
-            <div class="btn btn-outline-primary rounded-pill">Follow</div>
-          </div>
-        </div>
+        <div class="container"></div>
       </div>
     </div>
 
